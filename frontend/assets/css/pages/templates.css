@@ -1,0 +1,12 @@
+.container-table-variables{
+	height: 340px;
+	overflow: auto;
+
+}
+.table-variables td:first-child{
+	direction: ltr;
+	text-align: left;
+}
+.table-variables td{
+	width:50%
+}

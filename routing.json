@@ -1,0 +1,77 @@
+[
+	{
+		"path": ["userpanel", "email", "sent"],
+		"controller": "controllers\\email@sent",
+		"method":"get"
+	},
+	{
+		"path": ["userpanel", "email", "get"],
+		"controller": "controllers\\email@get",
+		"method":"get"
+	},
+	{
+		"path": ["userpanel", "email", "send"],
+		"controller": "controllers\\email@send",
+		"method":["get","post"]
+	},
+	{
+		"path":["userpanel","settings","email","senders"],
+		"controller": "controllers\\settings\\senders@listsenders",
+		"method":"get"
+	},
+	{
+		"path":["userpanel","settings","email","senders","add"],
+		"controller": "controllers\\settings\\senders@add",
+		"method":["get","post"]
+	},
+	{
+		"path":["userpanel","settings","email","senders","delete",{"type":"dynamic","name":"sender", "regex":"/^\\d+$/"}],
+		"controller": "controllers\\settings\\senders@delete",
+		"method":["get","post"]
+	},
+	{
+		"path":["userpanel","settings","email","senders","edit",{"type":"dynamic","name":"sender", "regex":"/^\\d+$/"}],
+		"controller": "controllers\\settings\\senders@edit",
+		"method":["get","post"]
+	},
+	{
+		"path":["userpanel","settings","email","receivers"],
+		"controller": "controllers\\settings\\receivers@listreceivers",
+		"method":"get"
+	},
+	{
+		"path":["userpanel","settings","email","receivers","add"],
+		"controller": "controllers\\settings\\receivers@add",
+		"method":["get","post"]
+	},
+	{
+		"path":["userpanel","settings","email","receivers","delete",{"type":"dynamic","name":"receiver", "regex":"/^\\d+$/"}],
+		"controller": "controllers\\settings\\receivers@delete",
+		"method":["get","post"]
+	},
+	{
+		"path":["userpanel","settings","email","receivers","edit",{"type":"dynamic","name":"receiver", "regex":"/^\\d+$/"}],
+		"controller": "controllers\\settings\\receivers@edit",
+		"method":["get","post"]
+	},
+	{
+		"path":["userpanel","settings","email","templates"],
+		"controller": "controllers\\settings\\templates@listtemplates",
+		"method":"get"
+	},
+	{
+		"path":["userpanel","settings","email","templates","add"],
+		"controller": "controllers\\settings\\templates@add",
+		"method":["get","post"]
+	},
+	{
+		"path":["userpanel","settings","email","templates","delete",{"type":"dynamic","name":"template", "regex":"/^\\d+$/"}],
+		"controller": "controllers\\settings\\templates@delete",
+		"method":["get","post"]
+	},
+	{
+		"path":["userpanel","settings","email","templates","edit",{"type":"dynamic","name":"template", "regex":"/^\\d+$/"}],
+		"controller": "controllers\\settings\\templates@edit",
+		"method":["get","post"]
+	}
+]

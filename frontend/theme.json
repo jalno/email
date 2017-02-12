@@ -1,0 +1,92 @@
+{
+	"name" : "clipone",
+	"title":"Clip One",
+	"version" : "1.0.0",
+	"author" : {
+		"name" : "Amir.h Yeganemehr",
+		"website" : "http://www.yeganemehr.ir"
+	},
+	"autoload":"autoloader.json",
+	"languages":{
+		"fa_IR" : "langs/fa_IR.json"
+	},
+	"assets":[
+	],
+	"views":[
+		{
+			"name":"\\themes\\clipone\\views\\email\\sent\\listview",
+			"parent":"\\packages\\email\\views\\sent\\listview",
+			"file":"html/sent/list.php"
+		},
+		{
+			"name":"\\themes\\clipone\\views\\email\\get\\listview",
+			"parent":"\\packages\\email\\views\\get\\listview",
+			"file":"html/get/list.php"
+		},
+		{
+			"name":"\\themes\\clipone\\views\\email\\send",
+			"parent":"\\packages\\email\\views\\send",
+			"file":"html/send.php"
+		},
+		{
+			"name":"\\themes\\clipone\\views\\email\\settings\\senders\\listview",
+			"parent":"\\packages\\email\\views\\settings\\senders\\listview",
+			"file":"html/settings/senders/list.php"
+		},
+		{
+			"name":"\\themes\\clipone\\views\\email\\settings\\senders\\add",
+			"parent":"\\packages\\email\\views\\settings\\senders\\add",
+			"file":"html/settings/senders/add.php"
+		},
+		{
+			"name":"\\themes\\clipone\\views\\email\\settings\\senders\\delete",
+			"parent":"\\packages\\email\\views\\settings\\senders\\delete",
+			"file":"html/settings/senders/delete.php"
+		},
+		{
+			"name":"\\themes\\clipone\\views\\email\\settings\\senders\\edit",
+			"parent":"\\packages\\email\\views\\settings\\senders\\edit",
+			"file":"html/settings/senders/edit.php"
+		},
+		{
+			"name":"\\themes\\clipone\\views\\email\\settings\\templates\\listview",
+			"parent":"\\packages\\email\\views\\settings\\templates\\listview",
+			"file":"html/settings/templates/list.php"
+		},
+		{
+			"name":"\\themes\\clipone\\views\\email\\settings\\templates\\add",
+			"parent":"\\packages\\email\\views\\settings\\templates\\add",
+			"file":"html/settings/templates/add.php"
+		},
+		{
+			"name":"\\themes\\clipone\\views\\email\\settings\\templates\\delete",
+			"parent":"\\packages\\email\\views\\settings\\templates\\delete",
+			"file":"html/settings/templates/delete.php"
+		},
+		{
+			"name":"\\themes\\clipone\\views\\email\\settings\\templates\\edit",
+			"parent":"\\packages\\email\\views\\settings\\templates\\edit",
+			"file":"html/settings/templates/edit.php"
+		},
+		{
+			"name":"\\themes\\clipone\\views\\email\\settings\\receivers\\listview",
+			"parent":"\\packages\\email\\views\\settings\\receivers\\listview",
+			"file":"html/settings/receivers/list.php"
+		},
+		{
+			"name":"\\themes\\clipone\\views\\email\\settings\\receivers\\delete",
+			"parent":"\\packages\\email\\views\\settings\\receivers\\delete",
+			"file":"html/settings/receivers/delete.php"
+		},
+		{
+			"name":"\\themes\\clipone\\views\\email\\settings\\receivers\\add",
+			"parent":"\\packages\\email\\views\\settings\\receivers\\add",
+			"file":"html/settings/receivers/add.php"
+		},
+		{
+			"name":"\\themes\\clipone\\views\\email\\settings\\receivers\\edit",
+			"parent":"\\packages\\email\\views\\settings\\receivers\\edit",
+			"file":"html/settings/receivers/edit.php"
+		}
+	]
+}
