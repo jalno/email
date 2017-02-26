@@ -1,5 +1,10 @@
 var templates = function(){
 	var form = $('.create_form');
+    var CKEDITOR_replace = function(){
+        CKEDITOR.replace( 'html', {
+            fullPage: true,
+        });
+    }
 	var runSelect2 = function(){
 		$('select', form).attr('dir','rtl').select2({
 			language:'fa',
@@ -32,6 +37,7 @@ var templates = function(){
 		init: function() {
 			runSelect2();
 			setVariables();
+			CKEDITOR_replace();
 		}
 	}
 }();
