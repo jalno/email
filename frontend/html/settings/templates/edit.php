@@ -40,13 +40,6 @@ $this->the_header();
 							'label' => translator::trans("email.template.subject")
 						));
 						$this->createField(array(
-							'type' => 'textarea',
-							'name' => 'html',
-							'label' => translator::trans("email.template.text"),
-							'rows' => 4,
-							'class' => 'form-control ckeditor'
-						));
-						$this->createField(array(
 							'name' => 'status',
 							'type' => 'select',
 							'label' => translator::trans("email.template.status"),
@@ -68,6 +61,17 @@ $this->the_header();
 								</tbody>
 							</table>
 						</div>
+					</div>
+					<div class="col-xs-12">
+						<?php 
+							$this->createField(array(
+								'type' => 'textarea',
+								'name' => 'html',
+								'label' => translator::trans("email.template.text"),
+								'rows' => 4,
+								'class' => 'form-control ckeditor'
+							));
+						?>
 					</div>
 					<div class="col-md-12">
 		                <p>
