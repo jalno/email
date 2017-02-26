@@ -3,12 +3,13 @@ namespace packages\email;
 use \packages\base\options;
 use \packages\base\events;
 use \packages\base\translator;
+use \packages\base\packages;
 use \packages\base\IO;
 use \packages\base\date;
 use \packages\userpanel\user;
 use \packages\email\Html2Text;
 use \packages\email\sent;
-use \packages\sms\template;
+use \packages\email\template;
 use \packages\email\sender;
 use \packages\email\sender\address;
 use \packages\email\events as emailEvents;
@@ -96,6 +97,19 @@ class api{
 		if(!$name){
 			$name = basename($file);
 		}
+		$storage = packages::package('email')->getFilePath('storage/private/attachments/');
+		if(!IO\is_dir($storage)){
+			IO\mkdir($storage, true);
+		}
+		$real_storage = IO\realpath($storage);
+		$real_file = IO\realpath($file);
+		if(substr($real_file, 0, strlen($real_storage)) != $real_storage){
+			$new = $storage.IO\md5($file);
+			if(IO\copy($file, $new)){
+				$file = $new;
+			}
+		}
+		
 		$this->attachments[] = array(
 			'file' => $file,
 			'name' => $name,
