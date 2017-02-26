@@ -130,6 +130,10 @@ class templates extends controller{
 				if(template::where("name", $inputs['name'])->where("lang", $inputs['lang'])->has()){
 					throw new duplicateRecord("name");
 				}
+				$inputs['html'] = preg_replace_callback('/\\[((?:[a-z0-9_]+(?:-(?:\\>|&gt;))?)+)\\]/i', function($matches){
+					return html_entity_decode($matches[0]);
+				}, $inputs['html']);
+
 				$template = $templates->getByName($inputs['name']);
 				$templateObj = new template();
 				$templateObj->name = $inputs['name'];
@@ -222,6 +226,7 @@ class templates extends controller{
 						throw new duplicateRecord("name");
 					}
 					unset($templateExsits);
+					
 					$template = $templates->getByName($inputs['name']);
 					$templateObj->name = $inputs['name'];
 					if($template){
@@ -238,6 +243,9 @@ class templates extends controller{
 						throw new duplicateRecord("lang");
 					}
 				}
+				$inputs['html'] = preg_replace_callback('/\\[((?:[a-z0-9_]+(?:-(?:\\>|&gt;))?)+)\\]/i', function($matches){
+					return html_entity_decode($matches[0]);
+				}, $inputs['html']);
 
 				foreach(array('lang','html','subject', 'status') as $key){
 					if(isset($inputs[$key])){
