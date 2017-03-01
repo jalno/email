@@ -89,7 +89,7 @@ $this->the_header();
 					'label' => translator::trans("email.user.sender")
 				),
 				array(
-					'type' => 'number',
+					'type' => 'email',
 					'name' => 'sender_address',
 					'label' => translator::trans("email.address.sender"),
 					'ltr' => true
