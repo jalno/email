@@ -5,9 +5,9 @@
 	},
 	"rtl": true,
 	"phrases":{
-		"email.get.bySenderNumber": "ایمیل دریافت شده از {senderNumber}",
+		"email.get.bySenderAddress": "ایمیل دریافت شده از {senderAddress}",
 		"email.get.description": "دریافت شده در {receive_at} ، متن: {text}",
-		"email.sent.byReceiverNumber": "ایمیل ارسال شده به {receiverNumber}",
+		"email.sent.byReceiverAddress": "ایمیل ارسال شده به {receiverAddress}",
 		"email.sent.description": "ارسال شده در {send_at} ، متن: {text}",
 		"usertype.permissions.email_sent_list": "لیست ایمیل های ارسالی",
 		"usertype.permissions.email_sent_list_anonymous": "لیست ایمیل های ارسالی ناشناس",
