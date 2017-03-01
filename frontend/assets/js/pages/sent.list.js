@@ -1,5 +1,5 @@
 var searchDialog = function () {
-	var form = $('#sms_sent_search');
+	var form = $('#email_sent_search');
 	var runUserListener = function(){
 		$("input[name=sender_user_name],input[name=receiver_user_name]", form).autocomplete({
 			source: function( request, response ) {
