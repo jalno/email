@@ -76,7 +76,6 @@ $this->the_header();
 	</div>
 	<div class="modal-body">
 		<form id="email_sent_search" class="form-horizontal" action="<?php echo userpanel\url("email/sent"); ?>" method="GET">
-			<input type="hidden" name="user" value="">
 			<?php
 			$this->setHorizontalForm('sm-3','sm-9');
 			$feilds = array(
