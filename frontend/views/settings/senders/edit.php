@@ -32,7 +32,7 @@ class edit extends editView{
 	}
 	public function getSendersForSelect(){
 		$options = array();
-		foreach($this->getSenders()->get() as $sender){
+		foreach($this->getSenders() as $sender){
 			$title = translator::trans('email.sender.'.$sender->getName());
 			$options[] = array(
 				'value' => $sender->getName(),

@@ -235,10 +235,10 @@ class senders extends controller{
 			throw new NotFound;
 		}
 		$view = view::byName("\\packages\\email\\views\\settings\\senders\\edit");
-		$view->setSender($senderObj);
 		$senders = new sendersEvent();
 		events::trigger($senders);
-		$view->setSenders($senders);
+		$view->setSenders($senders->get());
+		$view->setSender($senderObj);
 		if(http::is_post()){
 			$inputsRules = array(
 				'title' => array(
