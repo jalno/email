@@ -218,6 +218,10 @@
 		{
 			"classes":["listeners\\search"],
 			"file":"listeners/search.php"
+		},
+		{
+			"classes":["listeners\\cronjob"],
+			"file":"listeners/cronjob.php"
 		}
 	]
 }

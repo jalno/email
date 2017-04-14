@@ -25,7 +25,8 @@
 		"usertype.permissions.email_settings_templates_list": "لیست قالب های ایمیل",
 		"usertype.permissions.email_settings_templates_add": "افزودن قالب ایمیل",
 		"usertype.permissions.email_settings_templates_edit": "ویرایش قالب ایمیل",
-		"usertype.permissions.email_settings_templates_delete": "حذف قالب ایمیل"
+		"usertype.permissions.email_settings_templates_delete": "حذف قالب ایمیل",
+		"cronjob.task.name.email_receive": "دریافت آخرین ایمیل ها"
 
 
 	}
