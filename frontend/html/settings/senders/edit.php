@@ -62,7 +62,7 @@ $this->the_header();
 						</div>
 						<div class="col-md-6">
 							<?php
-							foreach($this->getSenders()->get() as $sender){
+							foreach($this->getSenders() as $sender){
 								$name = $sender->getName();
 								echo("<div class=\"senderfields sender-{$name}\">");
 								foreach($sender->getFields() as $field){
