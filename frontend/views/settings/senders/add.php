@@ -18,13 +18,7 @@ class add extends addView{
 	function __beforeLoad(){
 		$this->setTitle(translator::trans("settings.email.senders.add"));
 		$this->setNavigation();
-		$this->addAssets();
-	}
-	public function addAssets(){
-		$this->addJSFile(theme::url('assets/plugins/jquery-validation/dist/jquery.validate.min.js'));
-		$this->addJSFile(theme::url('assets/plugins/bootstrap-inputmsg/bootstrap-inputmsg.min.js'));
-		$this->addJSFile(theme::url('assets/js/pages/senders.js'));
-		$this->addCSSFile(theme::url('assets/css/pages/senders.css'));
+		$this->addBodyClass('email_senders');
 	}
 	private function setNavigation(){
 		$add = new navigation\menuItem("sender_add");
