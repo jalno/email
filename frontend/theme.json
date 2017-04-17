@@ -11,6 +11,17 @@
 		"fa_IR" : "langs/fa_IR.json"
 	},
 	"assets":[
+		{"type":"package", "name":"jquery"},
+		{"type":"package", "name":"jquery-ui"},
+		{"type":"package", "name":"bootstrap"},
+		{"type":"package", "name":"jquery-validation"},
+		{"type":"package", "name":"bootstrap-inputmsg"},
+		{"type":"package", "name":"select2"},
+		{"type":"package", "name":"webuilder"},
+		{"type":"css", "file":"node_modules/select2/dist/css/select2.css"},
+		{"type":"less", "file":"assets/less/templates.less"},
+		{"type":"less", "file":"assets/less/send.less"},
+		{"type":"ts", "file":"assets/ts/Main.ts"}
 	],
 	"views":[
 		{
