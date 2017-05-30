@@ -222,6 +222,14 @@
 		{
 			"classes":["listeners\\cronjob"],
 			"file":"listeners/cronjob.php"
+		},
+		{
+			"classes":["listeners\\notifications"],
+			"file":"listeners/notifications.php"
+		},
+		{
+			"classes":["notifications\\channel"],
+			"file":"libraries/notifications/channel.php"
 		}
 	]
 }
