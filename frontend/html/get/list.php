@@ -69,7 +69,7 @@ $this->the_header();
 		<h4 class="modal-title"><?php echo translator::trans('search'); ?></h4>
 	</div>
 	<div class="modal-body">
-		<form id="email_get_search" class="form-horizontal" action="<?php echo userpanel\url("email/get"); ?>" method="GET">
+		<form id="emaillist_search" class="form-horizontal" action="<?php echo userpanel\url("email/get"); ?>" method="GET">
 			<?php
 			$this->setHorizontalForm('sm-3','sm-9');
 			$feilds = array(
@@ -121,7 +121,7 @@ $this->the_header();
 		</form>
 	</div>
 	<div class="modal-footer">
-		<button type="submit" form="email_get_search" class="btn btn-success"><?php echo translator::trans("search"); ?></button>
+		<button type="submit" form="emaillist_search" class="btn btn-success"><?php echo translator::trans("search"); ?></button>
 		<button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true"><?php echo translator::trans('cancel'); ?></button>
 	</div>
 </div>

@@ -18,21 +18,14 @@ class add extends addView{
 	function __beforeLoad(){
 		$this->setTitle(translator::trans("settings.email.templates.add"));
 		$this->setNavigation();
+		$this->addBodyClass('email_templates');
 		$this->addAssets();
 		if(!$this->getDataForm('lang')){
 			$this->setDataForm('fa', 'lang');
 		}
 	}
 	public function addAssets(){
-		$this->addCSSFile(theme::url('assets/plugins/select2/dist/css/select2.min.css'));
-		$this->addCSSFile(theme::url('assets/plugins/select2-bootstrap-theme/dist/css/select2-bootstrap.min.css'));
-		$this->addJSFile(theme::url('assets/plugins/select2/dist/js/select2.full.min.js'));
-		$this->addJSFile(theme::url('assets/plugins/select2/dist/js/i18n/fa.js'));
-		$this->addJSFile(theme::url('assets/plugins/jquery-validation/dist/jquery.validate.min.js'));
-		$this->addJSFile(theme::url('assets/plugins/bootstrap-inputmsg/bootstrap-inputmsg.min.js'));
 		$this->addJSFile(theme::url('assets/plugins/ckeditor/ckeditor.js'));
-		$this->addJSFile(theme::url('assets/js/pages/templates.js'));
-		$this->addCSSFile(theme::url('assets/css/pages/templates.css'));
 	}
 	private function setNavigation(){
 		$add = new navigation\menuItem("template_add");

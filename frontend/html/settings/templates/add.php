@@ -18,7 +18,7 @@ $this->the_header();
 				</div>
             </div>
             <div class="panel-body">
-                <form class="create_form" action="<?php echo userpanel\url('settings/email/templates/add'); ?>" method="post">
+                <form class="tempates_form" action="<?php echo userpanel\url('settings/email/templates/add'); ?>" method="post">
 					<div class="col-md-6">
 						<?php
 						$this->createField(array(

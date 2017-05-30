@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+		"module": "commonjs",
+   		"target": "es5",
+		"sourceMap": false,
+		"removeComments": true
+    },
+	"files": [
+        "./assets/ts/classes/EmailList.ts",
+        "./assets/ts/classes/Senders.ts",
+        "./assets/ts/classes/Templates.ts",
+        "./assets/ts/Main.ts"
+    ]
+}

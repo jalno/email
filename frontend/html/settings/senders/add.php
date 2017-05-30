@@ -1,10 +1,7 @@
 <?php
-use \packages\base;
 use \packages\base\translator;
 use \packages\userpanel;
-use \packages\userpanel\date;
 use \packages\email\sender\address;
-use \themes\clipone\utility;
 
 $this->the_header();
 ?>
@@ -20,7 +17,7 @@ $this->the_header();
             </div>
             <div class="panel-body">
                 <div class="table-responsive">
-                    <form class="create_form" action="<?php echo userpanel\url('settings/email/senders/add'); ?>" method="post">
+                    <form class="senders_form" action="<?php echo userpanel\url('settings/email/senders/add'); ?>" method="post">
 						<div class="addressesfields"></div>
 						<div class="col-md-6">
 							<?php

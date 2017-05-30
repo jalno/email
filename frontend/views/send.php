@@ -15,9 +15,8 @@ class send extends emailend{
 	function __beforeLoad(){
 		$this->setTitle(translator::trans('email.send'));
 		$this->setNavigation();
+		$this->addBodyClass('emailsend');
 		$this->addJSFile(theme::url('assets/plugins/ckeditor/ckeditor.js'));
-		$this->addJSFile(theme::url('assets/js/pages/send.js'));
-		$this->addCSSFile(theme::url('assets/css/pages/send.css'));
 	}
 	protected function getNumbersForSelect(){
 		$options = array();
