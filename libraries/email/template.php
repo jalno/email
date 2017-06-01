@@ -1,5 +1,6 @@
 <?php
 namespace packages\email;
+use \packages\base\json;
 use \packages\base\db\dbObject;
 class template extends dbObject{
 	const active = 1;
@@ -92,6 +93,9 @@ class template extends dbObject{
 							$value = $obj;
 						}
 					}
+				}
+				if(is_array($value) or is_object($value)){
+					$value = json\encode($value);
 				}
 				$values[] = $value;
 			}
