@@ -35,6 +35,7 @@ class api{
 		$template = new template();
 		$template->where('name', $name);
 		$template->where('lang', $lang);
+		$template->where('status', template::active);
 		if($template = $template->getOne()){
 			$render = $template->render($parameters);
 			$this->text = $render['text'];
