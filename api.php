@@ -184,5 +184,5 @@ class unkownLanguage extends \Exception{
 
 }
 class deactivedAdressException extends \Exception{}
-class defaultNumberException extends \Exception{}
+class defaultAddressException extends \Exception{}
 class attachmentException extends \Exception{}
