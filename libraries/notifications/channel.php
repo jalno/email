@@ -13,6 +13,7 @@ class channel extends notifications\channel{
 		$template = new template();
 		$template->where('name', $event->getName());
 		$template->where('lang', $lang);
+		$template->where('status', template::active);
 		if($template->has()){
 			try{
 				foreach($event->getTargetUsers() as $user){
