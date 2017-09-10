@@ -42,4 +42,7 @@ class get extends dbObject{
 		}
 		return $data;
 	}
+	public function getContent():string{
+		return $this->html ? $this->html : $this->text;
+	}
 }

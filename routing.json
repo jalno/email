@@ -73,5 +73,15 @@
 		"path":["userpanel","settings","email","templates","edit",{"type":"dynamic","name":"template", "regex":"/^\\d+$/"}],
 		"controller": "controllers\\settings\\templates@edit",
 		"method":["get","post"]
+	},
+	{
+		"path": ["userpanel", "email", "get", "view", {"type":"dynamic","name":"email", "regex":"/^\\d+$/"}],
+		"controller": "controllers\\email@get_view",
+		"method": "get"
+	},
+	{
+		"path": ["userpanel", "email", "sent", "view", {"type":"dynamic","name":"email", "regex":"/^\\d+$/"}],
+		"controller": "controllers\\email@sent_view",
+		"method": "get"
 	}
 ]

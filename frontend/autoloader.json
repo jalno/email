@@ -59,6 +59,14 @@
 		{
 			"classes":["views\\email\\settings\\templates\\edit"],
 			"file":"views/settings/templates/edit.php"
+		},
+		{
+			"classes":["views\\email\\get\\view"],
+			"file":"views/get/view.php"
+		},
+		{
+			"classes":["views\\email\\sent\\view"],
+			"file":"views/sent/view.php"
 		}
 	]
 }

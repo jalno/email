@@ -20,7 +20,9 @@ class usertype{
 			"settings_templates_list",
 			"settings_templates_add",
 			"settings_templates_edit",
-			"settings_templates_delete"
+			"settings_templates_delete",
+			"get_view",
+			"sent_view"
 		);
 		foreach($permissions as $permission){
 			permissions::add('email_'.$permission);

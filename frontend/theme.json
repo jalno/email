@@ -21,6 +21,7 @@
 		{"type":"css", "file":"node_modules/select2/dist/css/select2.css"},
 		{"type":"less", "file":"assets/less/templates.less"},
 		{"type":"less", "file":"assets/less/send.less"},
+		{"type":"less", "file":"assets/less/design.less"},
 		{"type":"ts", "file":"assets/ts/Main.ts"}
 	],
 	"views":[
@@ -98,6 +99,16 @@
 			"name":"\\themes\\clipone\\views\\email\\settings\\receivers\\edit",
 			"parent":"\\packages\\email\\views\\settings\\receivers\\edit",
 			"file":"html/settings/receivers/edit.php"
+		},
+		{
+			"name":"\\themes\\clipone\\views\\email\\get\\view",
+			"parent":"\\packages\\email\\views\\get\\view",
+			"file":"html/get/view.php"
+		},
+		{
+			"name":"\\themes\\clipone\\views\\email\\sent\\view",
+			"parent":"\\packages\\email\\views\\sent\\view",
+			"file":"html/sent/view.php"
 		}
 	]
 }

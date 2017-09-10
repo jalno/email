@@ -230,6 +230,14 @@
 		{
 			"classes":["notifications\\channel"],
 			"file":"libraries/notifications/channel.php"
+		},
+		{
+			"classes":["views\\get\\view"],
+			"file":"views/email/get/view.php"
+		},
+		{
+			"classes":["views\\sent\\view"],
+			"file":"views/email/sent/view.php"
 		}
 	]
 }

@@ -23,9 +23,9 @@ use \packages\email\sent;
 use \packages\email\get;
 use \packages\email\sender;
 use \packages\email\sender\address;
-
 use \packages\email\api;
-
+use \packages\email\views\get as getview;
+use \packages\email\views\sent as sentview;
 class email extends controller{
 	protected $authentication = true;
 	public function sent(){
@@ -377,15 +377,114 @@ class email extends controller{
 			$view->setDataForm($this->inputsvalue($inputsRules));
 		}else{
 			$this->response->setStatus(true);
-			if(isset(http::$request['get']['to'])){
-				if(safe::is_email(http::$request['get']['to'])){
-					$view->setDataForm(http::$request['get']['to'], 'to');
+			$inputsRules = [
+				'user' => [
+					'type' => 'number',
+					'optional' => true
+				],
+				'to' => [
+					'type' => 'email',
+					'optional' => true
+				],
+				'forward' => [
+					'type' => 'number',
+					'optional' => true
+				],
+				'type' => [
+					'values' => ['get', 'sent'],
+					'optional' => true
+				]
+			];
+			$inputs = $this->checkinputs($inputsRules);
+			foreach(array_keys($inputsRules) as $item){
+				if(isset($inputs[$item]) and $inputs[$item] == ""){
+					unset($inputs[$item]);
+				}
+			}
+			if(isset($inputs['user'])){
+				if($user = user::byId($inputs['user'])){
+					$view->setDataForm($user->email, 'to');
+				}
+			}elseif(isset($inputs['to'])){
+				$view->setDataForm($inputs['to'], 'to');
+			}
+			if(isset($inputs['forward'])){
+				if(isset($inputs['type'])){
+					$types = authorization::childrenTypes();
+					switch($inputs['type']){
+						case("get"):
+							authorization::haveOrFail('get_list');
+							$get = new get();
+							$get->where('id', $inputs['forward']);
+							if($get = $get->getOne()){
+								$view->setDataForm("FWD: {$get->subject}", 'subject');
+								$view->setDataForm($get->html, 'html');
+							}
+							break;
+						case("sent"):
+							authorization::haveOrFail('sent_list');
+							$sent = new sent();
+							db::join("userpanel_users", "userpanel_users.id=email_sent.receiver_user", "inner");
+							if($types){
+								$sent->where("userpanel_users.type", $types, 'in');
+							}else{
+								$sent->where("userpanel_users.id", authentication::getID());
+							}
+							$sent->where('email_sent.id', $inputs['forward']);
+							if($sent = $sent->getOne("email_sent.*")){
+								$view->setDataForm("FWD: {$sent->subject}", 'subject');
+								$view->setDataForm($sent->html, 'html');
+							}
+							break;
+					}
 				}
 			}
 		}
 		$this->response->setView($view);
 		return $this->response;
 	}
-
+	public function get_view($data){
+		authorization::haveOrFail('get_view');
+		if(!$email = get::byId($data['email'])){
+			throw new NotFound();
+		}
+		$view = view::byName(getview\view::class);
+		$this->response->setStatus(true);
+		$content = $email->getContent();
+		$alows = "<html><head><body><p><a><b><strong><i><div><u><ul><li><ol><img><audio><video><span><section><aside><meta><form><button><input><h1><h2><h3><h4><h5><h6><style><small><table><tbody><thead><th><td><tr><option><select><fieldset>";
+		$content = strip_tags($content, $alows);
+		$inputsRules = [
+			'extraFiles' => [
+				'type' => 'bool',
+				'default' => false,
+				'optional' => true
+			]
+		];
+		try{
+			$inputs = $this->checkinputs($inputsRules);
+			if(!$inputs['extraFiles']){
+				$content = preg_replace('/src\=(?:\"([^\"]+)\"|\'([^\']+)\')/', 'src=""', $content);
+				$content = preg_replace('/\@import[^\"|^\'|^\;]+/', '#', $content);
+			}
+		}catch(inputValidation $error){
+			$this->response->setStatus(false);
+			$view->setFormError(FormError::fromException($error));
+		}
+		$email->content = $content;
+		$view->setEmail($email);
+		$this->response->setView($view);
+		return $this->response;
+	}
+	public function sent_view($data){
+		authorization::haveOrFail('sent_view');
+		if(!$email = sent::byId($data['email'])){
+			throw new NotFound();
+		}
+		$view = view::byName(sentview\view::class);
+		$this->response->setStatus(true);
+		$view->setEmail($email);
+		$this->response->setView($view);
+		return $this->response;
+	}
 }
 class sendException extends \Exception{}
