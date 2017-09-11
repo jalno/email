@@ -1,1 +1,1 @@
-<pre><?php echo $this->email->html; ?></pre>
+<?php echo $this->getHtml(); ?>

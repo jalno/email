@@ -24,8 +24,8 @@ use \packages\email\get;
 use \packages\email\sender;
 use \packages\email\sender\address;
 use \packages\email\api;
-use \packages\email\views\get as getview;
-use \packages\email\views\sent as sentview;
+use \packages\email\views;
+
 class email extends controller{
 	protected $authentication = true;
 	public function sent(){
@@ -448,30 +448,25 @@ class email extends controller{
 		if(!$email = get::byId($data['email'])){
 			throw new NotFound();
 		}
-		$view = view::byName(getview\view::class);
+		$view = view::byName(views\get\view::class);
+		$view->setEmail($email);
+		
 		$this->response->setStatus(true);
-		$content = $email->getContent();
-		$alows = "<html><head><body><p><a><b><strong><i><div><u><ul><li><ol><img><audio><video><span><section><aside><meta><form><button><input><h1><h2><h3><h4><h5><h6><style><small><table><tbody><thead><th><td><tr><option><select><fieldset>";
-		$content = strip_tags($content, $alows);
-		$inputsRules = [
-			'extraFiles' => [
-				'type' => 'bool',
-				'default' => false,
-				'optional' => true
-			]
-		];
-		try{
-			$inputs = $this->checkinputs($inputsRules);
-			if(!$inputs['extraFiles']){
+		if($email->html){
+			$content = $email->html;
+			$allows = "<html><head><body><p><a><b><strong><i><div><u><ul><li><ol><img><audio><video><span><section><aside><meta><form><button><input><h1><h2><h3><h4><h5><h6><style><small><table><tbody><thead><th><td><tr><option><select><fieldset>";
+			$content = strip_tags($content, $allows);
+			if(!http::getURIData('externalFiles')){
 				$content = preg_replace('/src\=(?:\"([^\"]+)\"|\'([^\']+)\')/', 'src=""', $content);
 				$content = preg_replace('/\@import[^\"|^\'|^\;]+/', '#', $content);
 			}
-		}catch(inputValidation $error){
-			$this->response->setStatus(false);
-			$view->setFormError(FormError::fromException($error));
+			$view->setContent($content);
+			$view->isHTML();
+			$view->hasExternalFiles((bool)http::getURIData('externalFiles'));
+		}else{
+			$view->setContent($email->text);
+			$view->isText();
 		}
-		$email->content = $content;
-		$view->setEmail($email);
 		$this->response->setView($view);
 		return $this->response;
 	}
@@ -480,9 +475,17 @@ class email extends controller{
 		if(!$email = sent::byId($data['email'])){
 			throw new NotFound();
 		}
-		$view = view::byName(sentview\view::class);
-		$this->response->setStatus(true);
+		$view = view::byName(views\sent\view::class);
 		$view->setEmail($email);
+		
+		$this->response->setStatus(true);
+		if($email->html){
+			$view->setContent($email->html);
+			$view->isHTML();
+		}else{
+			$view->setContent($email->text);
+			$view->isText();
+		}
 		$this->response->setView($view);
 		return $this->response;
 	}

@@ -1,6 +1,6 @@
 import * as $ from "jquery";
 import "jquery-ui/ui/widgets/autocomplete.js";
-import {Router, AjaxResponse} from "webuilder";
+import { Router, AjaxResponse } from "webuilder";
 interface user{
 	id:number;
 	name:string;
@@ -76,7 +76,7 @@ export class EmailList{
 			}
 			$('.message-actions .open-email', $content).attr("href", Router.url(`userpanel/email/${$(this).data('type')}/view/${$(this).data('email')}`));
 			if($('.message-actions .load-email', $content).length){
-				$('.message-actions .load-email', $content).data("href", Router.url(`userpanel/email/${$(this).data('type')}/view/${$(this).data('email')}?extraFiles=1`)).css({color: '#999999'});
+				$('.message-actions .load-email', $content).data("href", Router.url(`userpanel/email/${$(this).data('type')}/view/${$(this).data('email')}?externalFiles=1`)).css({color: '#999999'});
 			}
 		});
 		$('li.messages-item', $messages).first().trigger('click');
