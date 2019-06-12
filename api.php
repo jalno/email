@@ -105,7 +105,7 @@ class api{
 		$real_storage = IO\realpath($storage);
 		$real_file = IO\realpath($file);
 		if(substr($real_file, 0, strlen($real_storage)) != $real_storage){
-			$new = $storage.IO\md5($file);
+			$new = $storage."/" . IO\md5($file);
 			if(IO\copy($file, $new)){
 				$file = $new;
 			}
