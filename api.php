@@ -48,7 +48,7 @@ class api{
 	}
 	public function to($address,$name = null){
 		$this->receiver_address = $address;
-		$this->name = $name;
+		$this->receiver_name = $name;
 		if($this->receiver_user === null){
 			$user = new user();
 			$user->where("email", $address);
