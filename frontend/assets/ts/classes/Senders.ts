@@ -1,3 +1,4 @@
+import "@jalno/translator";
 import * as $ from "jquery";
 import "jquery-validation";
 import "bootstrap";
@@ -55,7 +56,7 @@ export class Senders{
 				$('#address-add').modal('hide');
 			}else{
 				$('input[name=address]', form).inputMsg({
-					message: "این شماره قبلا وارد شده"
+					message: t("email.data_duplicate.cellphone"),
 				});
 			}
 		}
@@ -83,10 +84,10 @@ export class Senders{
 		for(let i =0;i!=addresses.length;i++){
 			let status,primary;
 			switch(addresses[i].status){
-				case(1):status = 'فعال';break;
-				case(2):status = 'غیرفعال';break;
+				case(1):status = t("email.sender.status.active");break;
+				case(2):status = t("email.sender.status.deactive");break;
 			}
-			primary = addresses[i].primary ? '<label class="label label-success">بله</label>' : 'خیر';
+			primary = addresses[i].primary ? `<label class="label label-success">${t("yes")}</label>` : t("no");
 
 			html += '<tr>';
 			html += '<td>'+(i+1)+'</td>';
@@ -95,7 +96,7 @@ export class Senders{
 			html += '<td>'+status+'</td>';
 			html += '<td>'+primary+'</td>';
 			html += '<td class="center">';
-				html += '<a href="#" class="btn btn-xs btn-danger btn-delete tooltips" data-address="'+addresses[i].address+'" title="حذف"><i class="fa fa-trash"></i></a>';
+				html += '<a href="#" class="btn btn-xs btn-danger btn-delete tooltips" data-address="'+addresses[i].address+`" title="${t("delete")}"><i class="fa fa-trash"></i></a>`;
 			html += '</td>';
 			html += '</tr>';
 		}

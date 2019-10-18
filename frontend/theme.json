@@ -19,6 +19,7 @@
 		{"type":"package", "name":"bootstrap-inputmsg", "version": "^1.0.0"},
 		{"type":"package", "name":"select2", "version": "^4.0.3"},
 		{"type":"package", "name":"webuilder", "version": "^1.0.6"},
+		{"type":"package", "name":"@jalno/translator", "version": "^1.0.3"},
 		{"type":"css", "file":"node_modules/select2/dist/css/select2.css"},
 		{"type":"less", "file":"assets/less/templates.less"},
 		{"type":"less", "file":"assets/less/send.less"},

@@ -4,12 +4,6 @@
  */
 
 CKEDITOR.editorConfig = function( config ) {
-	// Define changes to default configuration here. For example:
-	// config.language = 'fr';
-	// config.uiColor = '#AADC6E';
-	config.contentsLangDirection= 'rtl';
-	config.defaultLanguage = 'fa';
-	config.language = 'fa';
 	config.toolbar = [
 		{ name: 'document', items: [ 'Source', '-', 'Preview', 'Print', '-', 'Templates' ] },
 		{ name: 'clipboard', items: [ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo' ] },

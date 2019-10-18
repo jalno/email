@@ -21,7 +21,7 @@ class add extends addView{
 		$this->addBodyClass('email_templates');
 		$this->addAssets();
 		if(!$this->getDataForm('lang')){
-			$this->setDataForm('fa', 'lang');
+			$this->setDataForm(translator::getShortCodeLang(translator::getCodeLang()), 'lang');
 		}
 	}
 	public function addAssets(){

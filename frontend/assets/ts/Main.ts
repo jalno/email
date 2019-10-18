@@ -1,9 +1,25 @@
+import "@jalno/translator";
 import * as $ from "jquery";
 import {EmailList} from "./classes/EmailList";
 import {Senders} from "./classes/Senders";
 import {Templates} from "./classes/Templates";
-$(function(){
-	EmailList.initIfNeeded();
-	Senders.initIfNeeded();
-	Templates.initIfNeeded();
+
+export default class Main {
+	public static init() {
+		EmailList.initIfNeeded();
+		Senders.initIfNeeded();
+		Templates.initIfNeeded();
+		Main.prepareCKEDITOR();
+	}
+	private static prepareCKEDITOR() {
+		if (window.hasOwnProperty("CKEDITOR")) {
+			(window as any).CKEDITOR.config.contentsLangDirection = Translator.isRTL() ? 'rtl' : 'ltr';
+			(window as any).CKEDITOR.config.defaultLanguage = Translator.getActiveShortLang();
+			(window as any).CKEDITOR.config.language = Translator.getActiveShortLang();
+		}
+	}
+}
+
+$(() => {
+	Main.init();
 });

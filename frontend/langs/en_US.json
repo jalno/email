@@ -84,6 +84,13 @@
 		"email.receiver.status.deactive":"Deactive",
 		"email.receiver.delete.warning":"Are you sure want to delete Email receiver {receiver}? All received email by this will be deleted unrecoverably.",
 		"error.emails.receiver.connect":"Unfortunately We unable to connect to receiver using provided data. Please check inputs and try agian.",
-		"email.get.loadcontent": "Loading..."
+		"email.get.loadcontent": "Loading...",
+		"return": "Return",
+		"submit": "Submit",
+		"send": "Send",
+		"email.data_duplicate.cellphone": "This cellphone is already entered",
+		"yes": "Yes",
+		"no": "NO",
+		"delete": "Delete"
 	}
 }

@@ -1,3 +1,4 @@
+import "@jalno/translator";
 import * as $ from "jquery";
 import "select2";
 interface variable{
@@ -7,14 +8,14 @@ interface variable{
 export class Templates{
 	private static form = $('.tempates_form');
 	private static runSelect2():void{
-		$('select', Templates.form).attr('dir','rtl').select2({
-			language:'fa',
+		$('select', Templates.form).attr('dir', Translator.isRTL() ? 'rtl' : 'ltr').select2({
+			language: Translator.getActiveShortLang(),
 			minimumResultsForSearch: Infinity
 		});
 		$('select[name=name]', Templates.form).select2({
 			tags: true,
 			multiple: false,
-			language:'fa'
+			language: Translator.getActiveShortLang()
 		});
 		$('select[name=name]', Templates.form).change(Templates.setVariables);
 	}
