@@ -1,18 +1,9 @@
 <?php
 namespace packages\email;
-use \packages\base\options;
-use \packages\base\events;
-use \packages\base\translator;
-use \packages\base\packages;
-use \packages\base\IO;
-use \packages\base\date;
-use \packages\userpanel\user;
-use \packages\email\Html2Text;
-use \packages\email\sent;
-use \packages\email\template;
-use \packages\email\sender;
-use \packages\email\sender\address;
-use \packages\email\events as emailEvents;
+
+use packages\base\{options, events, translator, packages, date, IO, IO\File, IO\NotFoundException};
+use packages\userpanel\user;
+use packages\email\{Html2Text, Sent, Template, Sender, Sender\Address, Events as EmailEvents};
 
 class api{
 	private $subject;
@@ -91,30 +82,39 @@ class api{
 			throw new defaultAddressException();
 		}
 	}
-	public function addAttachment($file,$name = null){
-		if(!is_file($file)){
-			throw new attachmentException($file);
+	/**
+	 * @param string|File $file
+	 * @param string|null $name
+	 */
+	public function addAttachment($file,$name = null) {
+		if (is_string($file)) {
+			$file = new File\Local($file);
 		}
-		if(!$name){
-			$name = basename($file);
+		if (!$file instanceof File) {
+			throw new \TypeError("argument 1 is not a File object");
 		}
-		$storage = packages::package('email')->getFilePath('storage/private/attachments/');
-		if(!IO\is_dir($storage)){
-			IO\mkdir($storage, true);
+		if (!$file->exists()) {
+			throw new NotFoundException($file);
 		}
-		$real_storage = IO\realpath($storage);
-		$real_file = IO\realpath($file);
-		if(substr($real_file, 0, strlen($real_storage)) != $real_storage){
-			$new = $storage."/" . IO\md5($file);
-			if(IO\copy($file, $new)){
-				$file = $new;
-			}
+		if (!$name) {
+			$name = $file->basename;
+		}
+		$storage = Packages::package('email')->getHome()->directory('storage/private/attachments');
+		if(!$storage->exists()){
+			$storage->make(true);
+		}
+		$real_storage = $storage->getRealPath();
+		$real_file = $file->getRealPath();
+		if (substr($real_file, 0, strlen($real_storage)) != $real_storage) {
+			$new = $storage->file($file->md5());
+			$file->copyTo($new);
+			$file = $new;
 		}
 		
 		$this->attachments[] = array(
-			'file' => $file,
+			'file' => $file->getPath(),
 			'name' => $name,
-			'size' => IO\filesize($file)
+			'size' => $file->size(),
 		);
 		return $this;
 	}
@@ -141,7 +141,7 @@ class api{
 		return $this;
 	}
 	public function send(){
-		$email = new sent();
+		$email = new Sent();
 		$email->send_at = $this->time;
 		if(!$this->sender_address){
 			$this->fromDefaultAddress();
@@ -160,13 +160,13 @@ class api{
 		$email->text = $this->text;
 		$email->html = $this->html;
 		if($email->send_at >= date::time()){
-			$email->status = sent::queued;
+			$email->status = Sent::queued;
 		}else{
-			$email->status = sent::sending;
+			$email->status = Sent::sending;
 		}
 		$email->save();
 		foreach($this->attachments as $attachment){
-			$attach = new sent\attachment();
+			$attach = new Sent\Attachment();
 			$attach->mail = $email->id;
 			$attach->size = $attachment['size'];
 			$attach->name = $attachment['name'];
@@ -176,7 +176,7 @@ class api{
 		if($email->send_at >= date::time()){
 			$email->send();
 		}
-		events::trigger(new emailEvents\send($email));
+		Events::trigger(new emailEvents\send($email));
 		return $email->status;
 	}
 }
