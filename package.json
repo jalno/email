@@ -5,7 +5,8 @@
 	"autoload":"autoloader.json",
 	"dependencies": ["base", "userpanel"],
 	"languages":{
-		"fa_IR": "langs/fa_IR.json"
+		"fa_IR": "langs/fa_IR.json",
+		"en_US": "langs/en_US.json"
 	},
 	"events": [
 		{

@@ -1,0 +1,35 @@
+{
+	"author": {
+		"name" : "Amir.h Yeganemehr",
+		"website" : "http://yeganemehr.ir/"
+	},
+	"rtl": false,
+	"phrases":{
+		"email.get.bySenderAddress": "Received Email from {senderAddress}",
+		"email.get.description": "Receive date: {receive_at} ، Message: {text}",
+		"email.sent.byReceiverAddress": "Sent Email to {receiverAddress}",
+		"email.sent.description": "Send date: {send_at} ، Message: {text}",
+		"usertype.permissions.email_sent_list": "Sent Emails list",
+		"usertype.permissions.email_sent_list_anonymous": "Anonymous sent Emails list",
+		"usertype.permissions.email_get_list": "Received Emails list",
+		"usertype.permissions.email_get_list_anonymous": "Anonymous received Emails list",
+		"usertype.permissions.email_send": "Send Email",
+		"usertype.permissions.email_settings_senders_list": "Email senders list",
+		"usertype.permissions.email_settings_senders_add": "Add Email sender",
+		"usertype.permissions.email_settings_senders_edit": "Edit Email sender",
+		"usertype.permissions.email_settings_senders_delete": "Delete Email sender",
+		"usertype.permissions.email_settings_receivers_list": "Email receivers list",
+		"usertype.permissions.email_settings_receivers_add": "Add Email receiver",
+		"usertype.permissions.email_settings_receivers_edit": "Edit Email receiver",
+		"usertype.permissions.email_settings_receivers_delete": "Delete Email receiver",
+		"usertype.permissions.email_settings_templates_list": "Email templates list",
+		"usertype.permissions.email_settings_templates_add": "Add Email template",
+		"usertype.permissions.email_settings_templates_edit": "Edit Email template",
+		"usertype.permissions.email_settings_templates_delete": "Delete Email template",
+		"cronjob.task.name.email_receive": "Receive new Emails",
+		"usertype.permissions.email_get_view": "View received email",
+		"usertype.permissions.email_sent_view": "view sent email"
+
+
+	}
+}
