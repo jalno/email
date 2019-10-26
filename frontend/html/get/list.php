@@ -29,7 +29,7 @@ $this->the_header();
 						?>
 					</span>
 					<div class="messages-item-time">
-						<span class="text ltr" data-time="<?php echo date::format("Y/m/d H:i:s", $email->receive_at); ?>"><?php echo date::format("Y/m/d", $email->receive_at); ?></span>
+						<span class="text ltr" data-time="<?php echo date::format("l LTS", $email->receive_at); ?>"><?php echo date::format("l", $email->receive_at); ?></span>
 						<div class="messages-item-actions">
 							<?php if(authorization::is_accessed('send')){ ?>
 							<a target="_blank" href="<?php echo userpanel\url("email/send", ['reply'=>$email->id]); ?>"><i class="fa fa-mail-reply"></i></a>

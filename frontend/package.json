@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "@jalno/translator": "^1.0.4",
+    "@jalno/translator": "^1.0.3",
     "bootstrap": "^3.3.7",
     "bootstrap-inputmsg": "^1.0.0",
     "jquery": "^3.2.1",
