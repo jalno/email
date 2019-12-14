@@ -28,8 +28,8 @@
 		"usertype.permissions.email_settings_templates_delete": "حذف قالب ایمیل",
 		"cronjob.task.name.email_receive": "دریافت آخرین ایمیل ها",
 		"usertype.permissions.email_get_view": "مشاهده ایمیل های دریافت شده",
-		"usertype.permissions.email_sent_view": "مشاهده ایمیل های ارسال شده"
+		"usertype.permissions.email_sent_view": "مشاهده ایمیل های ارسال شده",
 
-
+		"notifications.channel.name.email": "ایمیل"
 	}
 }
