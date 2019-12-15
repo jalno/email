@@ -1,34 +1,36 @@
 <?php
 namespace packages\email\notifications;
-use \packages\base\event;
-use \packages\base\translator;
-use \packages\notifications;
-use \packages\email\api;
-use \packages\email\template;
-use \packages\email\deactivedAdressException;
-use \packages\email\defaultAddressException;
-class channel extends notifications\channel{
-	public function notify(event $event){
-		$lang = translator::getShortCodeLang();
-		$template = new template();
+
+use packages\base\{Event, Translator};
+use packages\notifications;
+use packages\email\{API, Template, DeactivedAdressException, DefaultAddressException};
+
+class Channel extends notifications\Channel {
+
+	public function notify(Event $event){
+		$lang = Translator::getShortCodeLang();
+		$template = new Template();
 		$template->where('name', $event->getName());
 		$template->where('lang', $lang);
-		$template->where('status', template::active);
-		if($template->has()){
-			try{
-				foreach($event->getTargetUsers() as $user){
-					$api = new api();
+		$template->where('status', Template::active);
+		if ($template->has()) {
+			try {
+				foreach ($event->getTargetUsers() as $user) {
+					$api = new API();
 					$arguments = array_replace(array('user' => $user), $event->getArguments());
 					$api->template($event->getName(), $arguments);
 					$api->to($user->email, $user->getFullName());
 					$api->toUser($user);
 					$api->send();
 				}
-			}catch(deactivedAdressException $e){
-				
-			}catch(defaultAddressException $e){
-				
+			} catch (DeactivedAdressException $e) {				
+			} catch (DefaultAddressException $e) {
 			}
 		}
 	}
+
+	public function getName(): string {
+		return "email";
+	}
+
 }

@@ -28,8 +28,8 @@
 		"usertype.permissions.email_settings_templates_delete": "Delete Email template",
 		"cronjob.task.name.email_receive": "Receive new Emails",
 		"usertype.permissions.email_get_view": "View received email",
-		"usertype.permissions.email_sent_view": "view sent email"
+		"usertype.permissions.email_sent_view": "view sent email",
 
-
+		"notifications.channel.name.email": "Email"
 	}
 }
