@@ -9,27 +9,41 @@
 		"email.get.description": "دریافت شده در {receive_at} ، متن: {text}",
 		"email.sent.byReceiverAddress": "ایمیل ارسال شده به {receiverAddress}",
 		"email.sent.description": "ارسال شده در {send_at} ، متن: {text}",
+		"cronjob.task.name.email_receive": "دریافت آخرین ایمیل ها",
+		"notifications.channel.name.email": "ایمیل",
+
+		"usertype.permissions.email": "ایمیل",
+		"usertype.permissions.email_send": "ارسال ایمیل",
+
+		"usertype.permissions.email_sent": "ایمیل های ارسال شده",
 		"usertype.permissions.email_sent_list": "لیست ایمیل های ارسالی",
+		"usertype.permissions.email_sent_view": "مشاهده ایمیل های ارسال شده",
 		"usertype.permissions.email_sent_list_anonymous": "لیست ایمیل های ارسالی ناشناس",
+
+		"usertype.permissions.email_get": "ایمیل های دریافت شده",
+		"usertype.permissions.email_get_view": "مشاهده ایمیل های دریافت شده",
 		"usertype.permissions.email_get_list": "لیست ایمیل های دریافتی",
 		"usertype.permissions.email_get_list_anonymous": "لیست ایمیل های دریافتی ناشناس",
-		"usertype.permissions.email_send": "ارسال ایمیل",
+
+		"usertype.permissions.email_settings": "تنظیمات ایمیل",
+
+		"usertype.permissions.email_settings_senders": "ارسال کننده های ایمیل",
 		"usertype.permissions.email_settings_senders_list": "لیست ارسال کننده های ایمیل",
 		"usertype.permissions.email_settings_senders_add": "افزودن ارسال کننده ایمیل",
 		"usertype.permissions.email_settings_senders_edit": "ویرایش ارسال کننده ایمیل",
 		"usertype.permissions.email_settings_senders_delete": "حذف ارسال کننده ایمیل",
+
+		"usertype.permissions.email_settings_receivers": "دریافت کننده های ایمیل",
 		"usertype.permissions.email_settings_receivers_list": "لیست دریافت کننده های ایمیل",
 		"usertype.permissions.email_settings_receivers_add": "افزودن دریافت کننده ایمیل",
 		"usertype.permissions.email_settings_receivers_edit": "ویرایش دریافت کننده ایمیل",
 		"usertype.permissions.email_settings_receivers_delete": "حذف دریافت کننده ایمیل",
+
+		"usertype.permissions.email_settings_templates": "قالب های ایمیل",
 		"usertype.permissions.email_settings_templates_list": "لیست قالب های ایمیل",
 		"usertype.permissions.email_settings_templates_add": "افزودن قالب ایمیل",
 		"usertype.permissions.email_settings_templates_edit": "ویرایش قالب ایمیل",
-		"usertype.permissions.email_settings_templates_delete": "حذف قالب ایمیل",
-		"cronjob.task.name.email_receive": "دریافت آخرین ایمیل ها",
-		"usertype.permissions.email_get_view": "مشاهده ایمیل های دریافت شده",
-		"usertype.permissions.email_sent_view": "مشاهده ایمیل های ارسال شده",
+		"usertype.permissions.email_settings_templates_delete": "حذف قالب ایمیل"
 
-		"notifications.channel.name.email": "ایمیل"
 	}
 }
