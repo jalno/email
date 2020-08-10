@@ -43,7 +43,7 @@ class sent extends dbObject{
 			} else {
 				$this->status = self::failed;
 			}
-		} catch (\Throwable $e) {
+		} catch (\Exception $e) {
 			$this->status = self::failed;
 		}
 		$this->save();
