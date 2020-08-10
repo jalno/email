@@ -36,10 +36,14 @@ class sent extends dbObject{
 	public function send(){
 		$this->status = self::sending;
 		$this->save();
-		$status = $this->sender_address->sender->send($this);
-		if(in_array($status,array(self::sent, self::failed))){
-			$this->status = $status;
-		}else{
+		try {
+			$status = $this->sender_address->sender->send($this);
+			if (in_array($status, array(self::sent, self::failed))) {
+				$this->status = $status;
+			} else {
+				$this->status = self::failed;
+			}
+		} catch (\Exception $e) {
 			$this->status = self::failed;
 		}
 		$this->save();
