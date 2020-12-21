@@ -44,7 +44,25 @@
 		"usertype.permissions.email_settings_templates_list": "Email templates list",
 		"usertype.permissions.email_settings_templates_add": "Add email template",
 		"usertype.permissions.email_settings_templates_edit": "Edit email template",
-		"usertype.permissions.email_settings_templates_delete": "Delete email template"
+		"usertype.permissions.email_settings_templates_delete": "Delete email template",
+
+		"error.packages.email.error.emails.sent.sender_user.delete_user_warn": "Warn about Emails sent by this user",
+		"error.packages.email.error.emails.sent.sender_user.delete_user_warn.message": "This user has sent a Email or Emails; If you delete the user, all Emails sent by this user will be deleted!",
+		"packages.email.error.emails.sent.sender_user.delete_user_warn.view_emails": "You can view the Emails sent by this user using the link below.",
+		"packages.email.error.emails.sent.sender_user.delete_user_warn.view_emails.tell_someone": "If you want to view the Emails sent by this user, ask the person who has this access.",
+		"packages.email.error.emails.sent.sender_user.delete_user_warn.view_emails_btn": "View Email sent by this user",
+
+		"error.packages.email.error.emails.sent.receiver_user.delete_user_warn": "Warn about Emails sent to this user",
+		"error.packages.email.error.emails.sent.receiver_user.delete_user_warn.message": "Email or Emails have been sent to this user; If the user is deleted, all Emails sent to this user in the system will be deleted!",
+		"packages.email.error.emails.sent.receiver_user.delete_user_warn.view_emails": "You can view the Emails sent to this user using the following link.",
+		"packages.email.error.emails.sent.receiver_user.delete_user_warn.view_emails.tell_someone": "If you want to view the Emails sent to this user, ask the person who has this access.",
+		"packages.email.error.emails.sent.receiver_user.delete_user_warn.view_emails_btn": "View Email sent to this user",
+
+		"error.packages.email.error.emails.get.sender_user.delete_user_warn": "Warn about Emails received from this user",
+		"error.packages.email.error.emails.get.sender_user.delete_user_warn.message": "Email or Emails received from this user; If the user is deleted, all Emails received from this user in the system will be deleted!",
+		"packages.email.error.emails.get.sender_user.delete_user_warn.view_emails": "You can view the Emails received from this user using the link below.",
+		"packages.email.error.emails.get.sender_user.delete_user_warn.view_emails.tell_someone": "If you want to view the Emails received from this user, ask the person who has this access.",
+		"packages.email.error.emails.get.sender_user.delete_user_warn.view_emails_btn": "View Email received from this user"
 
 	}
 }
