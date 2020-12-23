@@ -2,7 +2,9 @@
 	"permissions": "*",
 	"routing": "routing.json",
 	"frontend":"frontend",
-	"autoload":"autoloader.json",
+	"autoload": {
+		"directories": ["controllers", "libraries", "listeners", "processes", "views"]
+	},
 	"dependencies": ["base", "userpanel"],
 	"languages":{
 		"fa_IR": "langs/fa_IR.json",
@@ -12,6 +14,10 @@
 		{
 			"name":"\\packages\\userpanel\\events\\usertype_permissions_list",
 			"listener": "listeners\\settings\\usertype@permissions_list"
+		},
+		{
+			"name":"packages/userpanel/events/Users/BeforeDelete",
+			"listener": "listeners/userpanel/users/BeforeDelete@check"
 		},
 		{
 			"name":"\\packages\\userpanel\\events\\search",

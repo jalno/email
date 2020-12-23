@@ -43,7 +43,25 @@
 		"usertype.permissions.email_settings_templates_list": "لیست قالب های ایمیل",
 		"usertype.permissions.email_settings_templates_add": "افزودن قالب ایمیل",
 		"usertype.permissions.email_settings_templates_edit": "ویرایش قالب ایمیل",
-		"usertype.permissions.email_settings_templates_delete": "حذف قالب ایمیل"
+		"usertype.permissions.email_settings_templates_delete": "حذف قالب ایمیل",
+
+		"error.packages.emails.error.emails.sent.sender_user.delete_user_warn": "هشدار در خصوص ایمیل های ارسال شده توسط این کاربر",
+		"error.packages.emails.error.emails.sent.sender_user.delete_user_warn.message": "این کاربر ایمیل یا ایمیل هایی را ارسال کرده است؛ در صورت حذف کاربر، تمامی ایمیل های ارسال شده توسط این کاربر حذف خواهند شد!",
+		"packages.emails.error.emails.sent.sender_user.delete_user_warn.view_emails": "در صورت نیاز می توانید با استفاده از لینک زیر ایمیل های ارسال شده توسط این کاربر را مشاهده بفرمایید.",
+		"packages.emails.error.emails.sent.sender_user.delete_user_warn.view_emails.tell_someone": "در صورتی که قصد مشاهده ایمیل های ارسال شده توسط این کاربر را دارید، از شخصی که این دسترسی را دارا می باشد درخواست نمایید.",
+		"packages.emails.error.emails.sent.sender_user.delete_user_warn.view_emails_btn": "مشاهده ایمیل های ارسال شده توسط این کاربر",
+
+		"error.packages.emails.error.emails.sent.receiver_user.delete_user_warn": "هشدار در خصوص ایمیل های ارسال شده به این کاربر",
+		"error.packages.emails.error.emails.sent.receiver_user.delete_user_warn.message": "ایمیل و یا ایمیل هایی به این کاربر ارسال شده است؛ در صورت حذف کاربر، تمامی ایمیل های ارسال شده برای این کاربر در سامانه حذف خواهند شد!",
+		"packages.emails.error.emails.sent.receiver_user.delete_user_warn.view_emails": "در صورت نیاز می توانید با استفاده از لینک زیر ایمیل های ارسال شده به این کاربر را مشاهده بفرمایید.",
+		"packages.emails.error.emails.sent.receiver_user.delete_user_warn.view_emails.tell_someone": "در صورتی که قصد مشاهده ایمیل های ارسال شده به این کاربر را دارید، از شخصی که این دسترسی را دارا می باشد درخواست نمایید.",
+		"packages.emails.error.emails.sent.receiver_user.delete_user_warn.view_emails_btn": "مشاهده ایمیل های ارسال شده به این کاربر",
+
+		"error.packages.emails.error.emails.get.sender_user.delete_user_warn": "هشدار در خصوص ایمیل های دریافت شده از این کاربر",
+		"error.packages.emails.error.emails.get.sender_user.delete_user_warn.message": "ایمیل و یا ایمیل هایی از این کاربر دریافت شده است؛ در صورت حذف کاربر، تمامی ایمیل های دریافت شده از این کاربر در سامانه حذف خواهند شد!",
+		"packages.emails.error.emails.get.sender_user.delete_user_warn.view_emails": "در صورت نیاز می توانید با استفاده از لینک زیر ایمیل های دریافت شده از این کاربر را مشاهده بفرمایید.",
+		"packages.emails.error.emails.get.sender_user.delete_user_warn.view_emails.tell_someone": "در صورتی که قصد مشاهده ایمیل های دریافت شده از این کاربر را دارید، از شخصی که این دسترسی را دارا می باشد درخواست نمایید.",
+		"packages.emails.error.emails.get.sender_user.delete_user_warn.view_emails_btn": "مشاهده ایمیل های دریافت شده از این کاربر"
 
 	}
 }
