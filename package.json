@@ -28,8 +28,8 @@
 			"listener": "listeners\\cronjob@tasks"
 		},
 		{
-			"name":"\\packages\\notifications\\events\\channels",
-			"listener": "listeners\\notifications@channels"
+			"name":"packages/notifications/events/Channels",
+			"listener": "listeners/Notifications@channels"
 		}
 	]
 }
