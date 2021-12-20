@@ -1,19 +1,12 @@
 <?php
 namespace packages\email\listeners;
-use \packages\base\db;
-use \packages\base\db\parenthesis;
-use \packages\base\translator;
 
-use \packages\userpanel;
-use \packages\userpanel\date;
-use \packages\userpanel\events\search as event;
-use \packages\userpanel\search as saerchHandler;
-use \packages\userpanel\search\link;
-
-use \packages\email\authorization;
-use \packages\email\authentication;
-use \packages\email\get;
-use \packages\email\sent;
+use packages\base\{db, db\Parenthesis, Translator};
+use packages\userpanel;
+use packages\userpanel\{
+	Authentication, Date, events\Search as Event, Search as SearchHandler, Search\Link
+};
+use packages\email\{Authorization, Get, Sent};
 
 class search{
 	public function find(event $e){
@@ -62,7 +55,7 @@ class search{
 				'receive_at' => date::format("Y/m/d H:i:s", $get->receive_at),
 				'text' => mb_substr($get->text, 0, 70)
 			)));
-			saerchHandler::addResult($result);
+			SearchHandler::addResult($result);
 		}
 
 	}
@@ -85,7 +78,7 @@ class search{
 			if($types){
 				db::where("userpanel_users.type", $types, 'in');
 			}else{
-				db::where("userpanel_users.id", authentication::sentID());
+				db::where("userpanel_users.id", authentication::getID());
 			}
 		}
 		db::orderBy('email_sent.id', 'DESC');
@@ -104,7 +97,7 @@ class search{
 				'send_at' => date::format("Y/m/d H:i:s", $sent->send_at),
 				'text' => mb_substr($sent->text, 0, 70)
 			)));
-			saerchHandler::addResult($result);
+			SearchHandler::addResult($result);
 		}
 
 	}

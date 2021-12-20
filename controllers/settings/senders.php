@@ -152,7 +152,7 @@ class senders extends controller{
 							if(isset($data['name']) and $data['name']){
 								if(isset($data['address']) and safe::is_email($data['address'])){
 									if(isset($data['status']) and in_array($data['status'], array(address::active, address::deactive))){
-										if(address::byAddress($data['address'])){
+										if ((new Address)->byAddress($data['address'])) {
 											throw new duplicateRecord("address[{$key}][address]");
 										}
 									}else{
@@ -213,7 +213,7 @@ class senders extends controller{
 	}
 	public function delete($data){
 		authorization::haveOrFail('settings_senders_delete');
-		if(!$sender = sender::byID($data['sender'])){
+		if (!$sender = (new Sender)->byID($data['sender'])) {
 			throw new NotFound;
 		}
 		$view = view::byName("\\packages\\email\\views\\settings\\senders\\delete");
@@ -231,7 +231,7 @@ class senders extends controller{
 	}
 	public function edit($data){
 		authorization::haveOrFail('settings_senders_edit');
-		if(!$senderObj = sender::byID($data['sender'])){
+		if (!$senderObj = (new Sender)->byID($data['sender'])) {
 			throw new NotFound;
 		}
 		$view = view::byName("\\packages\\email\\views\\settings\\senders\\edit");

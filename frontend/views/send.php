@@ -18,16 +18,6 @@ class send extends emailend{
 		$this->addBodyClass('emailsend');
 		$this->addJSFile(theme::url('assets/plugins/ckeditor/ckeditor.js'));
 	}
-	protected function getNumbersForSelect(){
-		$options = array();
-		foreach($this->getNumbers() as $number){
-			$options[] = array(
-				'title' => $number->number,
-				'value' => $number->id
-			);
-		}
-		return $options;
-	}
 	protected function getAddressesForSelect(){
 		$options = array();
 		foreach($this->getAddresses() as $address){
