@@ -4,7 +4,8 @@ CREATE TABLE `email_senders` (
 	`handler` varchar(100) NOT NULL,
 	`status` tinyint(4) NOT NULL,
 	PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 CREATE TABLE `email_senders_addresses` (
 	`id` int(11) NOT NULL AUTO_INCREMENT,
 	`sender` int(11) NOT NULL,
@@ -14,7 +15,8 @@ CREATE TABLE `email_senders_addresses` (
 	PRIMARY KEY (`id`),
 	KEY `sender` (`sender`),
 	CONSTRAINT `email_senders_addresses_ibfk_1` FOREIGN KEY (`sender`) REFERENCES `email_senders` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 CREATE TABLE `email_senders_params` (
 	`id` int(11) NOT NULL AUTO_INCREMENT,
 	`sender` int(11) NOT NULL,
@@ -24,7 +26,8 @@ CREATE TABLE `email_senders_params` (
 	UNIQUE KEY `sender_2` (`sender`,`name`),
 	KEY `sender` (`sender`),
 	CONSTRAINT `email_senders_params_ibfk_1` FOREIGN KEY (`sender`) REFERENCES `email_senders` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 CREATE TABLE `email_receivers` (
 	`id` int(11) NOT NULL AUTO_INCREMENT,
 	`title` varchar(255) NOT NULL,
@@ -33,10 +36,10 @@ CREATE TABLE `email_receivers` (
 	`port` smallint(5) unsigned NOT NULL,
 	`username` varchar(255) NOT NULL,
 	`password` varchar(255) NOT NULL,
-	`authentication` tinyint(4) NOT NULL,
+	`authentication` tinyint(4) NULL,
 	`encryption` tinyint(4) NOT NULL,
 	`status` int(11) NOT NULL,
- PRIMARY KEY (`id`)
+	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `email_templates` (
@@ -74,6 +77,7 @@ CREATE TABLE `email_sent` (
 	CONSTRAINT `email_sent_ibfk_2` FOREIGN KEY (`sender_user`) REFERENCES `userpanel_users` (`id`) ON DELETE SET NULL,
 	CONSTRAINT `email_sent_ibfk_3` FOREIGN KEY (`receiver_user`) REFERENCES `userpanel_users` (`id`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
+
 CREATE TABLE `email_sent_attachments` (
 	`id` int(11) NOT NULL AUTO_INCREMENT,
 	`mail` int(11) NOT NULL,
@@ -84,6 +88,7 @@ CREATE TABLE `email_sent_attachments` (
 	KEY `mail` (`mail`),
 	CONSTRAINT `email_sent_attachments_ibfk_1` FOREIGN KEY (`mail`) REFERENCES `email_sent` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 CREATE TABLE `email_get` (
 	`id` int(11) NOT NULL AUTO_INCREMENT,
 	`serverid` varchar(100) COLLATE utf8_persian_ci DEFAULT NULL,
@@ -104,6 +109,7 @@ CREATE TABLE `email_get` (
 	CONSTRAINT `email_get_ibfk_1` FOREIGN KEY (`receiver`) REFERENCES `email_receivers` (`id`) ON DELETE CASCADE,
 	CONSTRAINT `email_get_ibfk_2` FOREIGN KEY (`sender_user`) REFERENCES `userpanel_users` (`id`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
+
 CREATE TABLE `email_get_attachments` (
 	`id` int(11) NOT NULL AUTO_INCREMENT,
 	`mail` int(11) NOT NULL,

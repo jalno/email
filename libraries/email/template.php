@@ -67,7 +67,7 @@ class Template extends dbObject {
 		}
 		if ($this->rander) {
 			list($class,$method) = explode("@", $this->rander, 2);
-			if (class_method($class) and method_exists($class,$method)) {
+			if (class_exists($class) and method_exists($class,$method)) {
 				$obj = new $class($this);
 				return $obj->$method($params);
 			}

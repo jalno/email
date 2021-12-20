@@ -336,8 +336,8 @@ class email extends controller{
 						'email' => $email
 					);
 				}
-				if(isset($formdata['attachments'])){
-					foreach($formdata['attachments'] as $key => $attachment){
+				if(isset($inputs['attachments'])){
+					foreach($inputs['attachments'] as $key => $attachment){
 						if($attachment['error'] == 0){
 
 						}elseif(isset($attachment['error']) and $attachment['error'] != 4){

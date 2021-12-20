@@ -73,7 +73,7 @@ class api{
 	}
 	public function fromDefaultAddress(){
 		if($defaultAddress = options::get('packages.email.defaultAddress')){
-			if($address = address::byID($defaultAddress)){
+			if ($address = (new Address)->byID($defaultAddress)) {
 				$this->fromAddress($address);
 			}else{
 				throw new defaultAddressException();

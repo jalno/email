@@ -33,20 +33,27 @@ class receiver extends dbObject{
 		}
 		return $data;
 	}
-	public function connect(){
+	public function connect(): imap\MailBox {
 		$type = '';
-		$encryption = '';
-		switch($this->type){
+		switch ($this->type) {
 			case(self::IMAP):$type = 'imap';break;
 			case(self::POP3):$type = 'pop3';break;
 			case(self::NNTP):$type = 'NNTP';break;
 		}
-		switch($this->ecryption){
+
+		$encryption = '';
+		switch ($this->encryption) {
 			case(self::SSL):$encryption = 'ssl';break;
 			case(self::TLS):$encryption = 'tls';break;
 		}
-		return $this->driver = new imap\Mailbox("{".$this->hostname.":".$this->port."/".$type.($encryption ? ("/".$encryption) : '')."}INBOX", $this->username, $this->password);
 
+		$path = '{' . $this->hostname . ':' . $this->port . '/' . $type;
+		if ($encryption) {
+			$path .= '/' . $encryption;
+		}
+		$path .= "}INBOX";
+
+		return $this->driver = new imap\Mailbox($path, $this->username, $this->password);
 	}
 	public function check(){
 		if(!$this->driver){

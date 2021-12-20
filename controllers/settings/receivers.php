@@ -98,11 +98,6 @@ class receivers extends controller{
 					throw new inputValidation("status");
 				}
 			}
-			if(isset($inputs['receiver']) and $inputs['receiver']){
-				if(!in_array($inputs['receiver'], $receivers->getReceiverNames())){
-					throw new inputValidation("receiver");
-				}
-			}
 
 			foreach(array('id', 'title', 'hostname', 'port','username','type','encryption','status') as $item){
 				if(isset($inputs[$item]) and $inputs[$item]){
@@ -206,7 +201,8 @@ class receivers extends controller{
 	}
 	public function delete($data){
 		authorization::haveOrFail('settings_receivers_delete');
-		if(!$receiver = receiver::byID($data['receiver'])){
+		$receiver = (new Receiver)->byID($data['receiver']);
+		if (!$receiver) {
 			throw new NotFound;
 		}
 		$view = view::byName("\\packages\\email\\views\\settings\\receivers\\delete");
@@ -224,7 +220,8 @@ class receivers extends controller{
 	}
 	public function edit($data){
 		authorization::haveOrFail('settings_receivers_edit');
-		if(!$receiver = receiver::byID($data['receiver'])){
+		$receiver = (new Receiver)->byID($data['receiver']);
+		if (!$receiver) {
 			throw new NotFound;
 		}
 		$view = view::byName("\\packages\\email\\views\\settings\\receivers\\edit");
