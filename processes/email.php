@@ -1,11 +1,17 @@
 <?php
 namespace packages\email\processes;
-use \packages\base\process;
-use \packages\email\receiver;
-class email extends process{
-	public function checkForNewEmail(){
-		$receiver = new receiver;
-		$receiver->where("status", receiver::active);
+
+use packages\base\{Log, Process};
+use packages\email\Receiver;
+
+class Email extends Process {
+
+	public function checkForNewEmail(?array $data = null): void {
+		if (isset($data['verbose']) and $data['verbose']) {
+			Log::setLevel('debug');
+		}
+		$receiver = new Receiver;
+		$receiver->where("status", Receiver::active);
 		foreach($receiver->get() as $receiver){
 			$unreads = $receiver->check();
 			if($unreads){
