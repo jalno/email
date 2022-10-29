@@ -6,6 +6,7 @@ use packages\base\db;
 use packages\base\db\Parenthesis;
 use packages\base\http;
 use packages\base\NotFound;
+use packages\base\InputValidationException;
 use packages\base\utility\Safe;
 use packages\base\view\Error;
 use packages\base\views\FormError;
@@ -263,8 +264,8 @@ class email extends Controller
                         'email' => $email,
                     ];
                 }
-                if (isset($formdata['attachments'])) {
-                    foreach ($formdata['attachments'] as $key => $attachment) {
+                if (isset($inputs['attachments'])) {
+                    foreach ($inputs['attachments'] as $key => $attachment) {
                         if (0 == $attachment['error']) {
                         } elseif (isset($attachment['error']) and 4 != $attachment['error']) {
                             throw new InputValidationException("attachments[{$key}]");
