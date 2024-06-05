@@ -1,7 +1,7 @@
 <?php
-use \packages\base\translator;
+use \packages\base\Translator;
 use \packages\userpanel;
-use \packages\email\sender\address;
+use \packages\email\Sender\Address;
 
 $this->the_header();
 ?>
@@ -10,7 +10,7 @@ $this->the_header();
         <div class="panel panel-default">
             <div class="panel-heading">
                 <i class="fa fa-plus"></i>
-                <span><?php echo translator::trans("settings.email.senders.add"); ?></span>
+                <span><?php echo Translator::trans("settings.email.senders.add"); ?></span>
 				<div class="panel-tools">
 					<a class="btn btn-xs btn-link panel-collapse collapses" href="#"></a>
 				</div>
@@ -23,18 +23,18 @@ $this->the_header();
 							<?php
 							$this->createField(array(
 								'name' => 'title',
-								'label' => translator::trans("email.sender.title")
+								'label' => Translator::trans("email.sender.title")
 							));
 							$this->createField(array(
 								'name' => 'sender',
 								'type' => 'select',
-								'label' => translator::trans("email.sender.type"),
+								'label' => Translator::trans("email.sender.type"),
 								'options' => $this->getSendersForSelect()
 							));
 							$this->createField(array(
 								'name' => 'status',
 								'type' => 'select',
-								'label' => translator::trans("email.sender.status"),
+								'label' => Translator::trans("email.sender.status"),
 								'options' => $this->getSenderStatusForSelect()
 							));
 							?>
@@ -43,12 +43,12 @@ $this->the_header();
 								<thead>
 									<tr>
 										<th>#</th>
-										<th><?php echo translator::trans('email.address'); ?></th>
-										<th><?php echo translator::trans('email.address.name'); ?></th>
-										<th><?php echo translator::trans('email.address.status'); ?></th>
-										<th><?php echo translator::trans('email.address.primary'); ?></th>
+										<th><?php echo Translator::trans('email.address'); ?></th>
+										<th><?php echo Translator::trans('email.address.name'); ?></th>
+										<th><?php echo Translator::trans('email.address.status'); ?></th>
+										<th><?php echo Translator::trans('email.address.primary'); ?></th>
 										<th class="table-tools">
-											<a class="btn btn-xs btn-link btn-address-add tooltips" title="<?php echo translator::trans('email.address.add'); ?>" href="#address-add" data-toggle="modal"><i class="fa fa-plus"></i></a>
+											<a class="btn btn-xs btn-link btn-address-add tooltips" title="<?php echo Translator::trans('email.address.add'); ?>" href="#address-add" data-toggle="modal"><i class="fa fa-plus"></i></a>
 										</th>
 									</tr>
 								</thead>
@@ -70,8 +70,8 @@ $this->the_header();
 						</div>
 						<div class="col-md-12">
 			                <p>
-			                    <a href="<?php echo userpanel\url('settings/email/senders'); ?>" class="btn btn-light-grey"><i class="fa fa-chevron-circle-right"></i> <?php echo translator::trans('return'); ?></a>
-			                    <button type="submit" class="btn btn-success"><i class="fa fa-check-square-o"></i> <?php echo translator::trans("submit"); ?></button>
+			                    <a href="<?php echo userpanel\url('settings/email/senders'); ?>" class="btn btn-light-grey"><i class="fa fa-chevron-circle-right"></i> <?php echo Translator::trans('return'); ?></a>
+			                    <button type="submit" class="btn btn-success"><i class="fa fa-check-square-o"></i> <?php echo Translator::trans("submit"); ?></button>
 			                </p>
 						</div>
 	                </form>
@@ -83,7 +83,7 @@ $this->the_header();
 <div class="modal fade" id="address-add" tabindex="-1" data-show="true" role="dialog">
 	<div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		<h4 class="modal-title"><?php echo translator::trans('email.address.add'); ?></h4>
+		<h4 class="modal-title"><?php echo Translator::trans('email.address.add'); ?></h4>
 	</div>
 	<div class="modal-body">
 		<form id="address_add_form" class="form-horizontal" action="#" method="POST">
@@ -93,31 +93,31 @@ $this->the_header();
 				array(
 					'type' => 'email',
 					'name' => 'address',
-					'label' => translator::trans("email.address"),
+					'label' => Translator::trans("email.address"),
 					'ltr' => true
 				),
 				array(
 					'name' => 'name',
-					'label' => translator::trans("email.address.name"),
+					'label' => Translator::trans("email.address.name"),
 				),
 				array(
 					'type' => 'select',
 					'name' => 'status',
-					'label' => translator::trans("email.address.status"),
+					'label' => Translator::trans("email.address.status"),
 					'options' => array(
 						array(
-							'value' => address::active,
-							'title' => translator::trans("email.address.status.active")
+							'value' => Address::active,
+							'title' => Translator::trans("email.address.status.active")
 						),
 						array(
-							'value' => address::deactive,
-							'title' => translator::trans("email.address.status.deactive")
+							'value' => Address::deactive,
+							'title' => Translator::trans("email.address.status.deactive")
 						)
 					)
 				),
 				array(
 					'type' => 'checkbox',
-					'label' => translator::trans('email.address.primary'),
+					'label' => Translator::trans('email.address.primary'),
 					'name' => 'primary',
 					'options' => array(
 						array(
@@ -133,14 +133,14 @@ $this->the_header();
 		</form>
 	</div>
 	<div class="modal-footer">
-		<button type="submit" form="address_add_form" class="btn btn-success"><?php echo translator::trans("submit"); ?></button>
-		<button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true"><?php echo translator::trans('cancel'); ?></button>
+		<button type="submit" form="address_add_form" class="btn btn-success"><?php echo Translator::trans("submit"); ?></button>
+		<button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true"><?php echo Translator::trans('cancel'); ?></button>
 	</div>
 </div>
 <div class="modal fade" id="address-delete" tabindex="-1" data-show="true" role="dialog">
 	<div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		<h4 class="modal-title"><?php echo translator::trans('email.address.delete'); ?></h4>
+		<h4 class="modal-title"><?php echo Translator::trans('email.address.delete'); ?></h4>
 	</div>
 	<div class="modal-body">
 		<form id="address_delete_form" class="form-horizontal" action="#" method="POST">
@@ -149,8 +149,8 @@ $this->the_header();
 		</form>
 	</div>
 	<div class="modal-footer">
-		<button type="submit" form="address_delete_form" class="btn btn-danger"><?php echo translator::trans("submit"); ?></button>
-		<button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true"><?php echo translator::trans('cancel'); ?></button>
+		<button type="submit" form="address_delete_form" class="btn btn-danger"><?php echo Translator::trans("submit"); ?></button>
+		<button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true"><?php echo Translator::trans('cancel'); ?></button>
 	</div>
 </div>
 <?php

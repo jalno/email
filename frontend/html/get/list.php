@@ -1,17 +1,17 @@
 <?php
-use \packages\base\translator;
+use \packages\base\Translator;
 use \packages\userpanel;
-use \packages\userpanel\date;
-use \packages\email\authorization;
+use \packages\userpanel\Date;
+use \packages\email\Authorization;
 
 $this->the_header();
 ?>
 <div class="panel panel-default">
 	<div class="panel-heading">
-		<i class="fa fa-envelope"></i> <?php echo translator::trans('email.get'); ?>
+		<i class="fa fa-envelope"></i> <?php echo Translator::trans('email.get'); ?>
 		<div class="panel-tools">
-			<a class="btn btn-xs btn-link tooltips" title="<?php echo translator::trans('search'); ?>" href="#search" data-toggle="modal"><i class="fa fa-search"></i></a>
-			<?php if($this->canSend){ ?><a class="btn btn-xs btn-link tooltips" title="<?php echo translator::trans('email.send'); ?>" href="<?php echo userpanel\url('email/send'); ?>"><i class="fa fa-plus"></i></a><?php } ?>
+			<a class="btn btn-xs btn-link tooltips" title="<?php echo Translator::trans('search'); ?>" href="#search" data-toggle="modal"><i class="fa fa-search"></i></a>
+			<?php if($this->canSend){ ?><a class="btn btn-xs btn-link tooltips" title="<?php echo Translator::trans('email.send'); ?>" href="<?php echo userpanel\url('email/send'); ?>"><i class="fa fa-plus"></i></a><?php } ?>
 			<a class="btn btn-xs btn-link panel-collapse collapses" href="#"></a>
 		</div>
 	</div>
@@ -29,9 +29,9 @@ $this->the_header();
 						?>
 					</span>
 					<div class="messages-item-time">
-						<span class="text ltr" data-time="<?php echo date::format("l LTS", $email->receive_at); ?>"><?php echo date::format("l", $email->receive_at); ?></span>
+						<span class="text ltr" data-time="<?php echo Date::format("l LTS", $email->receive_at); ?>"><?php echo Date::format("l", $email->receive_at); ?></span>
 						<div class="messages-item-actions">
-							<?php if(authorization::is_accessed('send')){ ?>
+							<?php if(Authorization::is_accessed('send')){ ?>
 							<a target="_blank" href="<?php echo userpanel\url("email/send", ['reply'=>$email->id]); ?>"><i class="fa fa-mail-reply"></i></a>
 							<?php } ?>
 						</div>
@@ -48,15 +48,15 @@ $this->the_header();
 					<div class="message-to"></div>
 					<div class="message-subject"></div>
 					<div class="message-actions">
-						<?php if(authorization::is_accessed('send')){ ?>
+						<?php if(Authorization::is_accessed('send')){ ?>
 							<a class="forward tooltips" title="Forward" target="_blank" href="#"><i class="fa fa-long-arrow-right"></i></a>
 						<?php
 						}
-						if(authorization::is_accessed('send')){ ?>
+						if(Authorization::is_accessed('send')){ ?>
 							<a class="send tooltips" title="Send email" target="_blank" href="#"><i class="fa fa-reply"></i></a>
 						<?php } ?>
 						<a class="open-email tooltips" title="Open" target="_blank" href="#"><i class="fa fa-envelope-open-o"></i></a>
-						<a class="load-email tooltips" href="#" title="<?php echo translator::trans("email.get.loadcontent"); ?>"><i class="fa fa-puzzle-piece"></i></a>
+						<a class="load-email tooltips" href="#" title="<?php echo Translator::trans("email.get.loadcontent"); ?>"><i class="fa fa-puzzle-piece"></i></a>
 					</div>
 				</div>
 				<div class="message-content ltr">
@@ -70,7 +70,7 @@ $this->the_header();
 <div class="modal fade" id="search" tabindex="-1" data-show="true" role="dialog">
 	<div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		<h4 class="modal-title"><?php echo translator::trans('search'); ?></h4>
+		<h4 class="modal-title"><?php echo Translator::trans('search'); ?></h4>
 	</div>
 	<div class="modal-body">
 		<form id="emaillist_search" class="form-horizontal" action="<?php echo userpanel\url("email/get"); ?>" method="GET">
@@ -80,7 +80,7 @@ $this->the_header();
 				array(
 					'name' => 'id',
 					'type' => 'address',
-					'label' => translator::trans("email.id"),
+					'label' => Translator::trans("email.id"),
 					'ltr' => true
 				),
 				array(
@@ -89,12 +89,12 @@ $this->the_header();
 				),
 				array(
 					'name' => 'sender_user_name',
-					'label' => translator::trans("email.user.sender")
+					'label' => Translator::trans("email.user.sender")
 				),
 				array(
 					'type' => 'email',
 					'name' => 'sender_address',
-					'label' => translator::trans("email.address.sender"),
+					'label' => Translator::trans("email.address.sender"),
 					'ltr' => true
 				),
 				array(
@@ -103,17 +103,17 @@ $this->the_header();
 				),
 				array(
 					'name' => 'text',
-					'label' => translator::trans("email.text"),
+					'label' => Translator::trans("email.text"),
 				),
 				array(
 					'name' => 'status',
 					'type' => 'select',
-					'label' => translator::trans("email.get.status"),
+					'label' => Translator::trans("email.get.status"),
 					'options' => $this->getStatusForSelect()
 				),
 				array(
 					'type' => 'select',
-					'label' => translator::trans('search.comparison'),
+					'label' => Translator::trans('search.comparison'),
 					'name' => 'comparison',
 					'options' => $this->getComparisonsForSelect()
 				)
@@ -125,8 +125,8 @@ $this->the_header();
 		</form>
 	</div>
 	<div class="modal-footer">
-		<button type="submit" form="emaillist_search" class="btn btn-success"><?php echo translator::trans("search"); ?></button>
-		<button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true"><?php echo translator::trans('cancel'); ?></button>
+		<button type="submit" form="emaillist_search" class="btn btn-success"><?php echo Translator::trans("search"); ?></button>
+		<button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true"><?php echo Translator::trans('cancel'); ?></button>
 	</div>
 </div>
 <?php

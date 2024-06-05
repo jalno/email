@@ -1,11 +1,11 @@
 <?php
 namespace packages\email;
 
-use packages\base\{options, events, translator, packages, date, IO, IO\File, IO\NotFoundException};
-use packages\userpanel\user;
+use packages\base\{Options, Events, Translator, Packages, Date, IO, IO\File, IO\NotFoundException};
+use packages\userpanel\User;
 use packages\email\{Html2Text, Sent, Template, Sender, Sender\Address, Events as EmailEvents};
 
-class api{
+class API{
 	private $subject;
 	private $text;
 	private $html;
@@ -18,15 +18,15 @@ class api{
 	private $time;
 	public function template($name,$parameters = array(),$lang = null){
 		if($lang === null){
-			$lang = translator::getShortCodeLang();
+			$lang = Translator::getShortCodeLang();
 		}
 		if(!$lang){
-			throw new unkownLanguage();
+			throw new UnKownLanguage();
 		}
-		$template = new template();
+		$template = new Template();
 		$template->where('name', $name);
 		$template->where('lang', $lang);
-		$template->where('status', template::active);
+		$template->where('status', Template::active);
 		if($template = $template->getOne()){
 			$render = $template->render($parameters);
 			$this->text = $render['text'];
@@ -41,7 +41,7 @@ class api{
 		$this->receiver_address = $address;
 		$this->receiver_name = $name;
 		if($this->receiver_user === null){
-			$user = new user();
+			$user = new User();
 			$user->where("email", $address);
 			if($user = $user->getOne()){
 				$this->toUser($user);
@@ -49,7 +49,7 @@ class api{
 		}
 		return $this;
 	}
-	public function toUser(user $receiver_user){
+	public function toUser(User $receiver_user){
 		$this->receiver_user = $receiver_user;
 		if(!$this->receiver_address){
 			$this->receiver_address = $receiver_user->email;
@@ -59,27 +59,27 @@ class api{
 		}
 		return $this;
 	}
-	public function fromUser(user $sender_user){
+	public function fromUser(User $sender_user){
 		$this->sender_user  = $sender_user;
 		return $this;
 	}
-	public function fromAddress(address $address){
-		if($address->status == address::active and $address->sender->status == sender::active){
+	public function fromAddress(Address $address){
+		if($address->status == Address::active and $address->sender->status == Sender::active){
 			$this->sender_address = $address;
 		}else{
-			throw new deactivedAdressException;
+			throw new DeactivedAdressException;
 		}
 		return $this;
 	}
 	public function fromDefaultAddress(){
-		if($defaultAddress = options::get('packages.email.defaultAddress')){
+		if($defaultAddress = Options::get('packages.email.defaultAddress')){
 			if ($address = (new Address)->byID($defaultAddress)) {
 				$this->fromAddress($address);
 			}else{
-				throw new defaultAddressException();
+				throw new DefaultAddressException();
 			}
 		}else{
-			throw new defaultAddressException();
+			throw new DefaultAddressException();
 		}
 	}
 	/**
@@ -133,7 +133,7 @@ class api{
 		$this->subject = $subject;
 	}
 	public function now(){
-		$this->time = date::time();
+		$this->time = Date::time();
 		return $this;
 	}
 	public function at($time){
@@ -159,7 +159,7 @@ class api{
 		$email->subject = $this->subject;
 		$email->text = $this->text;
 		$email->html = $this->html;
-		if($email->send_at >= date::time()){
+		if($email->send_at >= Date::time()){
 			$email->status = Sent::queued;
 		}else{
 			$email->status = Sent::sending;
@@ -176,13 +176,7 @@ class api{
 		if($email->send_at >= date::time()){
 			$email->send();
 		}
-		Events::trigger(new emailEvents\send($email));
+		Events::trigger(new EmailEvents\Send($email));
 		return $email->status;
 	}
 }
-class unkownLanguage extends \Exception{
-
-}
-class deactivedAdressException extends \Exception{}
-class defaultAddressException extends \Exception{}
-class attachmentException extends \Exception{}
