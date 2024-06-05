@@ -1,3 +1,7 @@
 <?php
+
 namespace packages\email;
-class AttachmentException extends \Exception{}
+
+class AttachmentException extends \Exception
+{
+}

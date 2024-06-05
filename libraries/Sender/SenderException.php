@@ -1,3 +1,7 @@
 <?php
+
 namespace packages\email\Sender;
-class SenderException extends \Exception{}
+
+class SenderException extends \Exception
+{
+}

@@ -1,3 +1,7 @@
 <?php
+
 namespace packages\email;
-class DefaultAddressException extends \Exception{}
+
+class DefaultAddressException extends \Exception
+{
+}

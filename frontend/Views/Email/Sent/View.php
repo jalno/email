@@ -1,11 +1,17 @@
 <?php
+
 namespace themes\clipone\Views\Email\Sent;
-use \themes\clipone\ViewTrait;
-use \packages\email\Views\Sent\View as SentView;
-class View extends SentView{
-	use ViewTrait;
-	protected $email;
-	function __beforeLoad(){
-		$this->email = $this->getEmail();
-	}
+
+use packages\email\Views\Sent\View as SentView;
+use themes\clipone\ViewTrait;
+
+class View extends SentView
+{
+    use ViewTrait;
+    protected $email;
+
+    public function __beforeLoad()
+    {
+        $this->email = $this->getEmail();
+    }
 }

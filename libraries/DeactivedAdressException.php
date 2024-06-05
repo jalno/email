@@ -1,3 +1,7 @@
 <?php
+
 namespace packages\email;
-class DeactivedAdressException extends \Exception{}
+
+class DeactivedAdressException extends \Exception
+{
+}

@@ -1,11 +1,9 @@
 <?php
-use \packages\base;
-use \packages\base\Translator;
-use \packages\email\Authorization;
+use packages\base\Translator;
+use packages\email\Authorization;
+use packages\userpanel;
+use packages\userpanel\Date;
 
-use \packages\userpanel;
-use \packages\userpanel\User;
-use \packages\userpanel\Date;
 $this->the_header();
 ?>
 <div class="row">
@@ -15,27 +13,27 @@ $this->the_header();
 				<i class="fa fa-envelope"></i> <?php echo Translator::trans('email.sent'); ?>
 				<div class="panel-tools">
 					<a class="btn btn-xs btn-link tooltips" title="<?php echo Translator::trans('search'); ?>" href="#search" data-toggle="modal"><i class="fa fa-search"></i></a>
-					<?php if($this->canSend){ ?><a class="btn btn-xs btn-link tooltips" title="<?php echo Translator::trans('email.send'); ?>" href="<?php echo userpanel\url('email/send'); ?>"><i class="fa fa-plus"></i></a><?php } ?>
+					<?php if ($this->canSend) { ?><a class="btn btn-xs btn-link tooltips" title="<?php echo Translator::trans('email.send'); ?>" href="<?php echo userpanel\url('email/send'); ?>"><i class="fa fa-plus"></i></a><?php } ?>
 					<a class="btn btn-xs btn-link panel-collapse collapses" href="#"></a>
 				</div>
 			</div>
 			<div class="panel-body">
 				<div class="row messages">
 					<ul class="messages-list col-sm-3">
-						<?php foreach($this->getDataList() as $email){ ?>
+						<?php foreach ($this->getDataList() as $email) { ?>
 						<li class="messages-item" data-email="<?php echo $email->id; ?>" data-to="<?php echo $email->receiver_address; ?>" data-from="<?php echo "{$email->sender_address->name} &apos;{$email->sender_address->address}&apos;"; ?>" data-type="sent">
 							<span class="messages-item-from">
-								<?php if($email->receiver_user){ ?>
+								<?php if ($email->receiver_user) { ?>
 									<a href="<?php echo userpanel\url('users/view/'.$email->receiver_user->id); ?>"><?php echo $email->receiver_user->getFullName(); ?></a>
-								<?php }else{
-									echo Translator::trans('email.user.receiver.unknown');
+								<?php } else {
+								    echo Translator::trans('email.user.receiver.unknown');
 								} ?>
 							</span>
 							<div class="messages-item-time">
-								<span class="text ltr" data-time="<?php echo Date::format("l LTS", $email->send_at); ?>"><?php echo Date::format("l", $email->send_at); ?></span>
+								<span class="text ltr" data-time="<?php echo Date::format('l LTS', $email->send_at); ?>"><?php echo Date::format('l', $email->send_at); ?></span>
 								<div class="messages-item-actions">
-									<?php if(Authorization::is_accessed('send')){ ?>
-									<a target="_blank" href="<?php echo userpanel\url("email/send", ['to'=>$email->receiver_address]); ?>"><i class="fa fa-mail-reply"></i></a>
+									<?php if (Authorization::is_accessed('send')) { ?>
+									<a target="_blank" href="<?php echo userpanel\url('email/send', ['to' => $email->receiver_address]); ?>"><i class="fa fa-mail-reply"></i></a>
 									<?php } ?>
 								</div>
 							</div>
@@ -55,11 +53,11 @@ $this->the_header();
 							<div class="message-subject">
 							</div>
 							<div class="message-actions">
-								<?php if(Authorization::is_accessed('send')){ ?>
+								<?php if (Authorization::is_accessed('send')) { ?>
 									<a class="forward tooltips" title="Forward" target="_blank" href="#"><i class="fa fa-long-arrow-right"></i></a>
 								<?php } ?>
 								<a class="open-email tooltips" title="Open" target="_blank" href="#"><i class="fa fa-envelope-open-o"></i></a>
-								<?php if(Authorization::is_accessed('send')){ ?>
+								<?php if (Authorization::is_accessed('send')) { ?>
 									<a class="send tooltips" title="Send email" target="_blank" href="#"><i class="fa fa-reply"></i></a>
 								<?php } ?>
 								
@@ -82,69 +80,69 @@ $this->the_header();
 		<h4 class="modal-title"><?php echo Translator::trans('search'); ?></h4>
 	</div>
 	<div class="modal-body">
-		<form id="emaillist_search" class="form-horizontal" action="<?php echo userpanel\url("email/sent"); ?>" method="GET">
+		<form id="emaillist_search" class="form-horizontal" action="<?php echo userpanel\url('email/sent'); ?>" method="GET">
 			<?php
-			$this->setHorizontalForm('sm-3','sm-9');
-			$feilds = array(
-				array(
-					'name' => 'id',
-					'type' => 'address',
-					'label' => Translator::trans("email.id"),
-					'ltr' => true
-				),
-				array(
-					'type' => 'hidden',
-					'name' => 'sender_user'
-				),
-				array(
-					'name' => 'sender_user_name',
-					'label' => Translator::trans("email.user.sender")
-				),
-				array(
-					'type' => 'address',
-					'name' => 'sender_address',
-					'label' => Translator::trans("email.address.sender"),
-					'ltr' => true
-				),
-				array(
-					'type' => 'hidden',
-					'name' => 'receiver_user'
-				),
-				array(
-					'name' => 'receiver_user_name',
-					'label' => Translator::trans("email.user.receiver")
-				),
-				array(
-					'type' => 'address',
-					'name' => 'receiver_address',
-					'label' => Translator::trans("email.address.receiver"),
-					'ltr' => true
-				),
-				array(
-					'name' => 'text',
-					'label' => Translator::trans("email.text"),
-				),
-				array(
-					'name' => 'status',
-					'type' => 'select',
-					'label' => Translator::trans("email.sent.status"),
-					'options' => $this->getStatusForSelect()
-				),
-				array(
-					'type' => 'select',
-					'label' => Translator::trans('search.comparison'),
-					'name' => 'comparison',
-					'options' => $this->getComparisonsForSelect()
-				)
-			);
-			foreach($feilds as $input){
-				echo $this->createField($input);
-			}
-			?>
+            $this->setHorizontalForm('sm-3', 'sm-9');
+$feilds = [
+    [
+        'name' => 'id',
+        'type' => 'address',
+        'label' => Translator::trans('email.id'),
+        'ltr' => true,
+    ],
+    [
+        'type' => 'hidden',
+        'name' => 'sender_user',
+    ],
+    [
+        'name' => 'sender_user_name',
+        'label' => Translator::trans('email.user.sender'),
+    ],
+    [
+        'type' => 'address',
+        'name' => 'sender_address',
+        'label' => Translator::trans('email.address.sender'),
+        'ltr' => true,
+    ],
+    [
+        'type' => 'hidden',
+        'name' => 'receiver_user',
+    ],
+    [
+        'name' => 'receiver_user_name',
+        'label' => Translator::trans('email.user.receiver'),
+    ],
+    [
+        'type' => 'address',
+        'name' => 'receiver_address',
+        'label' => Translator::trans('email.address.receiver'),
+        'ltr' => true,
+    ],
+    [
+        'name' => 'text',
+        'label' => Translator::trans('email.text'),
+    ],
+    [
+        'name' => 'status',
+        'type' => 'select',
+        'label' => Translator::trans('email.sent.status'),
+        'options' => $this->getStatusForSelect(),
+    ],
+    [
+        'type' => 'select',
+        'label' => Translator::trans('search.comparison'),
+        'name' => 'comparison',
+        'options' => $this->getComparisonsForSelect(),
+    ],
+];
+foreach ($feilds as $input) {
+    echo $this->createField($input);
+}
+?>
 		</form>
 	</div>
 	<div class="modal-footer">
-		<button type="submit" form="emaillist_search" class="btn btn-success"><?php echo Translator::trans("search"); ?></button>
+		<button type="submit" form="emaillist_search" class="btn btn-success"><?php echo Translator::trans('search'); ?></button>
 		<button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true"><?php echo Translator::trans('cancel'); ?></button>
 	</div>
 </div>

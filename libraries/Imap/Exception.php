@@ -1,5 +1,7 @@
 <?php
-namespace packages\email\Imap;
-class Exception extends \Exception {
-}
 
+namespace packages\email\Imap;
+
+class Exception extends \Exception
+{
+}

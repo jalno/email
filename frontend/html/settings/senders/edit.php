@@ -1,8 +1,8 @@
 <?php
-use \packages\base\Json;
-use \packages\base\Translator;
-use \packages\userpanel;
-use \packages\email\Sender\Address;
+use packages\base\Json;
+use packages\base\Translator;
+use packages\email\Sender\Address;
+use packages\userpanel;
 
 $this->the_header();
 ?>
@@ -11,7 +11,7 @@ $this->the_header();
         <div class="panel panel-default">
             <div class="panel-heading">
                 <i class="fa fa-edit"></i>
-                <span><?php echo Translator::trans("settings.email.senders.edit"); ?></span>
+                <span><?php echo Translator::trans('settings.email.senders.edit'); ?></span>
 				<div class="panel-tools">
 					<a class="btn btn-xs btn-link panel-collapse collapses" href="#"></a>
 				</div>
@@ -22,23 +22,23 @@ $this->the_header();
 						<div class="addressesfields"></div>
 						<div class="col-md-6">
 							<?php
-							$this->createField(array(
-								'name' => 'title',
-								'label' => Translator::trans("email.sender.title")
-							));
-							$this->createField(array(
-								'name' => 'sender',
-								'type' => 'select',
-								'label' => Translator::trans("email.sender.type"),
-								'options' => $this->getSendersForSelect()
-							));
-							$this->createField(array(
-								'name' => 'status',
-								'type' => 'select',
-								'label' => Translator::trans("email.sender.status"),
-								'options' => $this->getSenderStatusForSelect()
-							));
-							?>
+                            $this->createField([
+                                'name' => 'title',
+                                'label' => Translator::trans('email.sender.title'),
+                            ]);
+$this->createField([
+    'name' => 'sender',
+    'type' => 'select',
+    'label' => Translator::trans('email.sender.type'),
+    'options' => $this->getSendersForSelect(),
+]);
+$this->createField([
+    'name' => 'status',
+    'type' => 'select',
+    'label' => Translator::trans('email.sender.status'),
+    'options' => $this->getSenderStatusForSelect(),
+]);
+?>
 
 							<table class="table table-addresses" data-addresses='<?php echo Json\Encode($this->getAddressesData()); ?>'>
 								<thead>
@@ -59,20 +59,20 @@ $this->the_header();
 						</div>
 						<div class="col-md-6">
 							<?php
-							foreach($this->getSenders() as $sender){
-								$name = $sender->getName();
-								echo("<div class=\"senderfields sender-{$name}\">");
-								foreach($sender->getFields() as $field){
-									$this->createField($field);
-								}
-								echo("</div>");
-							}
-							?>
+foreach ($this->getSenders() as $sender) {
+    $name = $sender->getName();
+    echo "<div class=\"senderfields sender-{$name}\">";
+    foreach ($sender->getFields() as $field) {
+        $this->createField($field);
+    }
+    echo '</div>';
+}
+?>
 						</div>
 						<div class="col-md-12">
 			                <p>
 			                    <a href="<?php echo userpanel\url('settings/email/senders'); ?>" class="btn btn-light-grey"><i class="fa fa-chevron-circle-right"></i> <?php echo Translator::trans('return'); ?></a>
-			                    <button type="submit" class="btn btn-success"><i class="fa fa-check-square-o"></i> <?php echo Translator::trans("submit"); ?></button>
+			                    <button type="submit" class="btn btn-success"><i class="fa fa-check-square-o"></i> <?php echo Translator::trans('submit'); ?></button>
 			                </p>
 						</div>
 	                </form>
@@ -89,52 +89,52 @@ $this->the_header();
 	<div class="modal-body">
 		<form id="address_add_form" class="form-horizontal" action="#" method="POST">
 			<?php
-			$this->setHorizontalForm('sm-3','sm-9');
-			$feilds = array(
-				array(
-					'type' => 'email',
-					'name' => 'address',
-					'label' => Translator::trans("email.address"),
-					'ltr' => true
-				),
-				array(
-					'name' => 'name',
-					'label' => Translator::trans("email.address.name")
-				),
-				array(
-					'type' => 'select',
-					'name' => 'status',
-					'label' => Translator::trans("email.address.status"),
-					'options' => array(
-						array(
-							'value' => address::active,
-							'title' => Translator::trans("email.address.status.active")
-						),
-						array(
-							'value' => address::deactive,
-							'title' => Translator::trans("email.address.status.deactive")
-						)
-					)
-				),
-				array(
-					'type' => 'checkbox',
-					'label' => Translator::trans('email.address.primary'),
-					'name' => 'primary',
-					'options' => array(
-						array(
-							'value' => 1
-						)
-					)
-				)
-			);
-			foreach($feilds as $input){
-				echo $this->createField($input);
-			}
-			?>
+            $this->setHorizontalForm('sm-3', 'sm-9');
+$feilds = [
+    [
+        'type' => 'email',
+        'name' => 'address',
+        'label' => Translator::trans('email.address'),
+        'ltr' => true,
+    ],
+    [
+        'name' => 'name',
+        'label' => Translator::trans('email.address.name'),
+    ],
+    [
+        'type' => 'select',
+        'name' => 'status',
+        'label' => Translator::trans('email.address.status'),
+        'options' => [
+            [
+                'value' => Address::active,
+                'title' => Translator::trans('email.address.status.active'),
+            ],
+            [
+                'value' => Address::deactive,
+                'title' => Translator::trans('email.address.status.deactive'),
+            ],
+        ],
+    ],
+    [
+        'type' => 'checkbox',
+        'label' => Translator::trans('email.address.primary'),
+        'name' => 'primary',
+        'options' => [
+            [
+                'value' => 1,
+            ],
+        ],
+    ],
+];
+foreach ($feilds as $input) {
+    echo $this->createField($input);
+}
+?>
 		</form>
 	</div>
 	<div class="modal-footer">
-		<button type="submit" form="address_add_form" class="btn btn-success"><?php echo Translator::trans("submit"); ?></button>
+		<button type="submit" form="address_add_form" class="btn btn-success"><?php echo Translator::trans('submit'); ?></button>
 		<button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true"><?php echo Translator::trans('cancel'); ?></button>
 	</div>
 </div>
@@ -150,7 +150,7 @@ $this->the_header();
 		</form>
 	</div>
 	<div class="modal-footer">
-		<button type="submit" form="address_delete_form" class="btn btn-danger"><?php echo Translator::trans("submit"); ?></button>
+		<button type="submit" form="address_delete_form" class="btn btn-danger"><?php echo Translator::trans('submit'); ?></button>
 		<button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true"><?php echo Translator::trans('cancel'); ?></button>
 	</div>
 </div>

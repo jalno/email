@@ -5,8 +5,8 @@ namespace packages\email\Controllers;
 use packages\base\DB;
 use packages\base\DB\Parenthesis;
 use packages\base\HTTP;
-use packages\base\NotFound;
 use packages\base\InputValidationException;
+use packages\base\NotFound;
 use packages\base\Utility\Safe;
 use packages\base\View\Error;
 use packages\base\Views\FormError;
@@ -193,7 +193,7 @@ class Email extends Controller
 
     public function send()
     {
-        $view = view::byName(Views\Send::class);
+        $view = View::byName(Views\Send::class);
         Authorization::haveOrFail('send');
         DB::join('email_senders', 'email_senders_addresses.sender=email_senders.id', 'inner');
         DB::where('email_senders.status', Sender::active);
@@ -433,7 +433,7 @@ class Email extends Controller
 
         $query = new Get();
         if ($canAccessAnonymousEmails) {
-            db::join('userpanel_users', 'userpanel_users.id=email_get.sender_user', 'left');
+            DB::join('userpanel_users', 'userpanel_users.id=email_get.sender_user', 'left');
             $parenthesis = new Parenthesis();
             $parenthesis->where('userpanel_users.type', $types, 'in');
             $parenthesis->where('email_get.sender_user', null, 'is', 'or');
@@ -475,4 +475,3 @@ class Email extends Controller
         return $query;
     }
 }
-

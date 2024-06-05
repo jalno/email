@@ -1,5 +1,7 @@
 <?php
-namespace packages\email\Imap;
-class AttachmentDirException extends Exception{
 
+namespace packages\email\Imap;
+
+class AttachmentDirException extends Exception
+{
 }

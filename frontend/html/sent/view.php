@@ -1,1 +1,1 @@
-<?php echo $this->getHtml(); ?>
+<?php echo $this->getHtml();

@@ -1,10 +1,6 @@
 <?php
-use \packages\base;
-use \packages\base\Translator;
-use \packages\userpanel;
-use \packages\userpanel\Date;
-use \packages\email\Sender\Number;
-use \themes\clipone\Utility;
+use packages\base\Translator;
+use packages\userpanel;
 
 $this->the_header();
 $sender = $this->getSender();
@@ -15,11 +11,11 @@ $sender = $this->getSender();
 			<div class="alert alert-block alert-warning fade in">
 				<h4 class="alert-heading"><i class="fa fa-exclamation-triangle"></i> <?php echo Translator::trans('attention'); ?>!</h4>
 				<p>
-					<?php echo Translator::trans("email.sender.delete.warning", array('sender' => $sender->id)); ?>
+					<?php echo Translator::trans('email.sender.delete.warning', ['sender' => $sender->id]); ?>
 				</p>
 				<p>
 					<a href="<?php echo userpanel\url('settings/email/senders'); ?>" class="btn btn-light-grey"><i class="fa fa-chevron-circle-right"></i> <?php echo Translator::trans('back'); ?></a>
-					<button type="submit" class="btn btn-danger"><i class="fa fa-trash-o tip"></i> <?php echo Translator::trans("delete") ?></button>
+					<button type="submit" class="btn btn-danger"><i class="fa fa-trash-o tip"></i> <?php echo Translator::trans('delete'); ?></button>
 				</p>
 			</div>
 		</form>
