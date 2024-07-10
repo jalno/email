@@ -1,0 +1,19 @@
+{
+    "name": "jalno/email",
+    "type": "library",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "jalno/base": "@dev",
+        "jalno/userpanel" : "@dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "packages\\email\\": ["libraries/"],
+            "themes\\clipone\\Events\\SMS\\" : ["frontend/libraries/Events"],
+            "themes\\apital\\" : ["frontend/libraries/mvc"],
+            "themes\\clipone\\Views\\" : ["frontend/Views"]
+        }
+    }
+}
