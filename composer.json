@@ -11,9 +11,14 @@
     "autoload": {
         "psr-4": {
             "packages\\email\\": ["libraries/"],
-            "themes\\clipone\\Events\\SMS\\" : ["frontend/libraries/Events"],
-            "themes\\apital\\" : ["frontend/libraries/mvc"],
-            "themes\\clipone\\Views\\" : ["frontend/Views"]
+            "themes\\clipone\\Events\\SMS\\" : ["frontend/libraries/Events/"],
+            "themes\\apital\\" : ["frontend/libraries/mvc/"],
+            "themes\\clipone\\Views\\" : ["frontend/Views/"]
+        }
+    },
+    "extra": {
+        "jalno": {
+            "manifest": "package.json"
         }
     }
 }

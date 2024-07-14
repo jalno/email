@@ -1,87 +1,87 @@
 [
 	{
-		"path": ["userpanel", "email", "sent"],
-		"controller": "controllers\\email@sent",
+		"path": "userpanel/email/sent",
+		"controller": "packages/email/Controllers/Email@sent",
 		"method":"get"
 	},
 	{
-		"path": ["userpanel", "email", "get"],
-		"controller": "controllers\\email@get",
+		"path": "userpanel/email/get",
+		"controller": "packages/email/Controllers/Email@get",
 		"method":"get"
 	},
 	{
-		"path": ["userpanel", "email", "send"],
-		"controller": "controllers\\email@send",
+		"path": "userpanel/email/send",
+		"controller": "packages/email/Controllers/Email@send",
 		"method":["get","post"]
 	},
 	{
-		"path":["userpanel","settings","email","senders"],
-		"controller": "controllers\\settings\\senders@listsenders",
+		"path":"userpanel/settings/email/senders",
+		"controller": "packages/email/Controllers/Settings/Senders@listsenders",
 		"method":"get"
 	},
 	{
-		"path":["userpanel","settings","email","senders","add"],
-		"controller": "controllers\\settings\\senders@add",
+		"path":"userpanel/settings/email/senders/add",
+		"controller": "packages/email/Controllers/Settings/Senders@add",
 		"method":["get","post"]
 	},
 	{
 		"path":["userpanel","settings","email","senders","delete",{"type":"dynamic","name":"sender", "regex":"/^\\d+$/"}],
-		"controller": "controllers\\settings\\senders@delete",
+		"controller": "packages/email/Controllers/Settings/Senders@delete",
 		"method":["get","post"]
 	},
 	{
 		"path":["userpanel","settings","email","senders","edit",{"type":"dynamic","name":"sender", "regex":"/^\\d+$/"}],
-		"controller": "controllers\\settings\\senders@edit",
+		"controller": "packages/email/Controllers/Settings/Senders@edit",
 		"method":["get","post"]
 	},
 	{
-		"path":["userpanel","settings","email","receivers"],
-		"controller": "controllers\\settings\\receivers@listreceivers",
+		"path":"userpanel/settings/email/receivers",
+		"controller": "packages/email/Controllers/Settings/Receivers@listreceivers",
 		"method":"get"
 	},
 	{
-		"path":["userpanel","settings","email","receivers","add"],
-		"controller": "controllers\\settings\\receivers@add",
+		"path":"userpanel/settings/email/receivers/add",
+		"controller": "packages/email/Controllers/Settings/Receivers@add",
 		"method":["get","post"]
 	},
 	{
 		"path":["userpanel","settings","email","receivers","delete",{"type":"dynamic","name":"receiver", "regex":"/^\\d+$/"}],
-		"controller": "controllers\\settings\\receivers@delete",
+		"controller": "packages/email/Controllers/Settings/Receivers@delete",
 		"method":["get","post"]
 	},
 	{
 		"path":["userpanel","settings","email","receivers","edit",{"type":"dynamic","name":"receiver", "regex":"/^\\d+$/"}],
-		"controller": "controllers\\settings\\receivers@edit",
+		"controller": "packages/email/Controllers/Settings/Receivers@edit",
 		"method":["get","post"]
 	},
 	{
-		"path":["userpanel","settings","email","templates"],
-		"controller": "controllers\\settings\\templates@listtemplates",
+		"path":"userpanel/settings/email/templates",
+		"controller": "packages/email/Controllers/Settings/Templates@listtemplates",
 		"method":"get"
 	},
 	{
-		"path":["userpanel","settings","email","templates","add"],
-		"controller": "controllers\\settings\\templates@add",
+		"path":"userpanel/settings/email/templates/add",
+		"controller": "packages/email/Controllers/Settings/Templates@add",
 		"method":["get","post"]
 	},
 	{
 		"path":["userpanel","settings","email","templates","delete",{"type":"dynamic","name":"template", "regex":"/^\\d+$/"}],
-		"controller": "controllers\\settings\\templates@delete",
+		"controller": "packages/email/Controllers/Settings/Templates@delete",
 		"method":["get","post"]
 	},
 	{
 		"path":["userpanel","settings","email","templates","edit",{"type":"dynamic","name":"template", "regex":"/^\\d+$/"}],
-		"controller": "controllers\\settings\\templates@edit",
+		"controller": "packages/email/Controllers/Settings/Templates@edit",
 		"method":["get","post"]
 	},
 	{
 		"path": ["userpanel", "email", "get", "view", {"type":"dynamic","name":"email", "regex":"/^\\d+$/"}],
-		"controller": "controllers\\email@get_view",
+		"controller": "packages/email/Controllers/Email@get_view",
 		"method": "get"
 	},
 	{
 		"path": ["userpanel", "email", "sent", "view", {"type":"dynamic","name":"email", "regex":"/^\\d+$/"}],
-		"controller": "controllers\\email@sent_view",
+		"controller": "packages/email/Controllers/Email@sent_view",
 		"method": "get"
 	}
 ]
