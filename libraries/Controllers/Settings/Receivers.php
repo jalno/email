@@ -13,6 +13,7 @@ use packages\email\Controller;
 use packages\email\Imap\Exception as ImapException;
 use packages\email\Receiver;
 use packages\email\View;
+use themes\clipone\Views\Email as Views;
 use packages\userpanel;
 
 class Receivers extends Controller
@@ -22,7 +23,7 @@ class Receivers extends Controller
     public function listreceivers()
     {
         Authorization::haveOrFail('settings_receivers_list');
-        $view = View::byName(\packages\email\Views\Settings\Receivers\ListView::class);
+        $view = View::byName(Views\Settings\Receivers\ListView::class);
         $receiver = new Receiver();
         $inputsRules = [
             'id' => [
@@ -131,7 +132,7 @@ class Receivers extends Controller
     public function add()
     {
         Authorization::haveOrFail('settings_receivers_add');
-        $view = View::byName(\packages\email\Views\Settings\Receivers\Add::class);
+        $view = View::byName(Views\Settings\Receivers\Add::class);
         if (HTTP::is_post()) {
             $inputsRules = [
                 'title' => [
@@ -207,7 +208,7 @@ class Receivers extends Controller
         if (!$receiver) {
             throw new NotFound();
         }
-        $view = View::byName(\packages\email\Views\Settings\Receivers\Delete::class);
+        $view = View::byName(Views\Settings\Receivers\Delete::class);
         $view->setReceiver($receiver);
         if (HTTP::is_post()) {
             $receiver->delete();
@@ -229,7 +230,7 @@ class Receivers extends Controller
         if (!$receiver) {
             throw new NotFound();
         }
-        $view = View::byName(\packages\email\Views\Settings\Receivers\Edit::class);
+        $view = View::byName(Views\Settings\Receivers\Edit::class);
         $view->setReceiver($receiver);
         if (HTTP::is_post()) {
             $inputsRules = [

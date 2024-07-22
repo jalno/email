@@ -19,7 +19,7 @@ use packages\email\Sender;
 use packages\email\Sender\Address;
 use packages\email\Sent;
 use packages\email\View;
-use packages\email\Views;
+use themes\clipone\Views\Email as Views;
 use packages\userpanel;
 use packages\userpanel\User;
 

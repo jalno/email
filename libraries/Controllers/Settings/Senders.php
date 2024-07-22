@@ -17,6 +17,7 @@ use packages\email\Events\Senders as SendersEvent;
 use packages\email\Sender;
 use packages\email\Sender\Address;
 use packages\email\View;
+use themes\clipone\Views\Email as Views;
 use packages\userpanel;
 
 class Senders extends Controller
@@ -26,7 +27,7 @@ class Senders extends Controller
     public function listsenders()
     {
         Authorization::haveOrFail('settings_senders_list');
-        $view = View::byName(\packages\email\Views\Settings\Senders\ListView::class);
+        $view = View::byName(Views\Settings\Senders\ListView::class);
         $senders = new SendersEvent();
         Events::trigger($senders);
         $sender = new Sender();
@@ -116,7 +117,7 @@ class Senders extends Controller
     public function add()
     {
         Authorization::haveOrFail('settings_senders_add');
-        $view = View::byName(\packages\email\Views\Settings\Senders\Add::class);
+        $view = View::byName(Views\Settings\Senders\Add::class);
         $senders = new SendersEvent();
         Events::trigger($senders);
         $view->setSenders($senders);
@@ -216,7 +217,7 @@ class Senders extends Controller
         if (!$sender = (new Sender())->byID($data['sender'])) {
             throw new NotFound();
         }
-        $view = View::byName(\packages\email\Views\Settings\Senders\Delete::class);
+        $view = View::byName(Views\Settings\Senders\Delete::class);
         $view->setSender($sender);
         if (HTTP::is_post()) {
             $sender->delete();
@@ -237,7 +238,7 @@ class Senders extends Controller
         if (!$senderObj = (new Sender())->byID($data['sender'])) {
             throw new NotFound();
         }
-        $view = View::byName(\packages\email\Views\Settings\Senders\Edit::class);
+        $view = View::byName(Views\Settings\Senders\Edit::class);
         $senders = new SendersEvent();
         Events::trigger($senders);
         $view->setSenders($senders->get());

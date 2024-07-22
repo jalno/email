@@ -15,6 +15,7 @@ use packages\email\Events\Templates as TemplatesEvent;
 use packages\email\Html2Text;
 use packages\email\Template;
 use packages\email\View;
+use themes\clipone\Views\Email as Views;
 use packages\userpanel;
 
 class Templates extends Controller
@@ -24,7 +25,7 @@ class Templates extends Controller
     public function listtemplates()
     {
         Authorization::haveOrFail('settings_templates_list');
-        $view = View::byName(\packages\email\Views\Settings\Templates\ListView::class);
+        $view = View::byName(Views\Settings\Templates\ListView::class);
         $template = new Template();
         $inputsRules = [
             'id' => [
@@ -103,7 +104,7 @@ class Templates extends Controller
     public function add()
     {
         Authorization::haveOrFail('settings_templates_add');
-        $view = View::byName(\packages\email\Views\Settings\Templates\Add::class);
+        $view = View::byName(Views\Settings\Templates\Add::class);
         $templates = new TemplatesEvent();
         $view->setTemplates($templates->get());
         if (HTTP::is_post()) {
@@ -171,7 +172,7 @@ class Templates extends Controller
         if (!$template) {
             throw new NotFound();
         }
-        $view = View::byName(\packages\email\Views\Settings\Templates\Delete::class);
+        $view = View::byName(Views\Settings\Templates\Delete::class);
         $view->setTemplate($template);
         if (HTTP::is_post()) {
             $template->delete();
@@ -193,7 +194,7 @@ class Templates extends Controller
         if (!$templateObj) {
             throw new NotFound();
         }
-        $view = View::byName(\packages\email\Views\Settings\Templates\Edit::class);
+        $view = View::byName(Views\Settings\Templates\Edit::class);
         $view->setTemplate($templateObj);
         $templates = new TemplatesEvent();
         $view->setTemplates($templates->get());
