@@ -4,7 +4,7 @@ namespace packages\email\Controllers;
 
 use packages\base\DB;
 use packages\base\DB\Parenthesis;
-use packages\base\HTTP;
+use packages\base\Http;
 use packages\base\InputValidationException;
 use packages\base\NotFound;
 use packages\base\Utility\Safe;

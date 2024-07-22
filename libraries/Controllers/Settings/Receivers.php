@@ -3,7 +3,7 @@
 namespace packages\email\Controllers\Settings;
 
 use packages\base\DB\Parenthesis;
-use packages\base\HTTP;
+use packages\base\Http;
 use packages\base\InputValidation;
 use packages\base\NotFound;
 use packages\base\View\Error;
