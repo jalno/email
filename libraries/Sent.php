@@ -3,6 +3,7 @@
 namespace packages\email;
 
 use packages\base\DB\DBObject;
+use packages\userpanel\User;
 
 class Sent extends DBObject
 {
@@ -27,8 +28,8 @@ class Sent extends DBObject
     ];
     protected $relations = [
         'sender_address' => ['hasOne', Sender\Address::class, 'sender_address'],
-        'sender_user' => ['hasOne', \packages\userpanel\User::class, 'sender_user'],
-        'receiver_user' => ['hasOne', \packages\userpanel\User::class, 'receiver_user'],
+        'sender_user' => ['hasOne', User::class, 'sender_user'],
+        'receiver_user' => ['hasOne', User::class, 'receiver_user'],
         'attachments' => ['hasMany', Sent\Attachment::class, 'mail'],
     ];
 

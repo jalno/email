@@ -3,6 +3,7 @@
 namespace packages\email\Sent;
 
 use packages\base\DB\DBObject;
+use packages\email\Sent;
 
 class Attachment extends DBObject
 {
@@ -15,6 +16,6 @@ class Attachment extends DBObject
         'file' => ['type' => 'text', 'required' => true],
     ];
     protected $relations = [
-        'mail' => ['hasOne', \packages\email\Sent::class, 'mail'],
+        'mail' => ['hasOne', Sent::class, 'mail'],
     ];
 }

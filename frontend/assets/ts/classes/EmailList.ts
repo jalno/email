@@ -1,4 +1,3 @@
-import * as $ from "jquery";
 import "jquery-ui/ui/widgets/autocomplete.js";
 import { Router, AjaxResponse } from "webuilder";
 interface user{

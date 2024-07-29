@@ -3,6 +3,7 @@
 namespace packages\email\Sender;
 
 use packages\base\DB\DBObject;
+use packages\email\Sender;
 
 class Address extends DBObject
 {
@@ -17,7 +18,7 @@ class Address extends DBObject
         'status' => ['type' => 'int', 'required' => true],
     ];
     protected $relations = [
-        'sender' => ['hasOne', \packages\email\Sender::class, 'sender'],
+        'sender' => ['hasOne', Sender::class, 'sender'],
     ];
 
     protected function byAddress($address)
