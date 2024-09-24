@@ -384,7 +384,7 @@ class Email extends Controller
         $this->response->setStatus(true);
         if ($email->html) {
             $content = $email->html;
-            $allows = '<html><head><body><p><a><b><strong><i><div><u><ul><li><ol><img><audio><video><span><section><aside><meta><form><button><input><h1><h2><h3><h4><h5><h6><style><small><table><tbody><thead><th><td><tr><option><select><fieldset>';
+            $allows = '<html><head><body><p><a><b><strong><i><div><u><ul><li><ol><img><audio><video><span><section><aside><meta><form><button><input><h1><h2><h3><h4><h5><h6><style><small><table><tbody><thead><th><td><tr><option>><fieldset>';
             $content = strip_tags($content, $allows);
             if (!HTTP::getURIData('externalFiles')) {
                 $content = preg_replace('/src\=(?:\"([^\"]+)\"|\'([^\']+)\')/', 'src=""', $content);
